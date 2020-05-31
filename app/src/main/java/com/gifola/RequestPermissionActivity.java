@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.gifola.customfonts.MyEditText;
 import com.gifola.customfonts.MyTextViewMedium;
 
 public class RequestPermissionActivity extends AppCompatActivity {
@@ -19,11 +20,25 @@ public class RequestPermissionActivity extends AppCompatActivity {
     LinearLayout clicked;
     MyTextViewMedium sendper, requestper;
 
+    MyEditText edit_search;
+    ImageView cancel,img_fav,img_history,img_add;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_permission);
         setupToolbar();
+        fetchid();
+
+
+    }
+
+    private void fetchid() {
+        edit_search=findViewById(R.id.edit_search);
+        cancel=findViewById(R.id.cancel);
+        img_fav=findViewById(R.id.img_fav);
+        img_history=findViewById(R.id.img_history);
+        img_add=findViewById(R.id.img_add);
 
         clicked=findViewById(R.id.clicked);
         clicked.setOnClickListener(new View.OnClickListener() {

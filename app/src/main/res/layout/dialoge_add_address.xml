@@ -10,7 +10,6 @@
     android:gravity="center">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardclick"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -29,7 +28,6 @@
                 android:padding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/spinGeneral"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -65,6 +63,7 @@
                         android:background="@drawable/border">
 
                         <com.gifola.customfonts.MyEditText
+                            android:id="@+id/edit_alias"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:minHeight="35dp"
@@ -88,6 +87,7 @@
                         android:background="@drawable/border">
 
                         <com.gifola.customfonts.MyEditText
+                            android:id="@+id/edit_address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:minHeight="70dp"

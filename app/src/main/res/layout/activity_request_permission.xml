@@ -48,7 +48,7 @@
 
 
                     <com.gifola.customfonts.MyEditText
-                        android:id="@+id/edittetxt"
+                        android:id="@+id/edit_search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -151,6 +151,7 @@
                                 android:orientation="vertical">
 
                                 <com.gifola.customfonts.MyTextViewMedium
+                                    android:id="@+id/text_name"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="2dp"
@@ -161,6 +162,7 @@
 
 
                                 <com.gifola.customfonts.MyTextView
+                                    android:id="@+id/text_mobileno"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="2dp"
@@ -181,6 +183,7 @@
                                 android:orientation="vertical">
 
                                 <com.gifola.customfonts.MyTextViewItalic
+                                    android:id="@+id/text_date"
 
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -568,6 +571,7 @@
                                 >
 
                                 <ImageView
+                                    android:id="@+id/img_fav"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="center_vertical|left"
@@ -588,6 +592,7 @@
                                 >
 
                                 <ImageView
+                                    android:id="@+id/img_history"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="center_vertical|left"
@@ -606,6 +611,7 @@
                                 >
 
                                 <ImageView
+                                    android:id="@+id/img_add"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_gravity="right|center_vertical"

@@ -50,7 +50,7 @@
 
 
                     <com.gifola.customfonts.MyEditText
-                        android:id="@+id/edittetxt"
+                        android:id="@+id/edit_search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -132,6 +132,7 @@
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
+                                    android:id="@+id/text_date"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="left"
@@ -189,7 +190,7 @@
                                             android:orientation="vertical">
 
                                             <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/txt_device"
+                                                android:id="@+id/text_name"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:layout_margin="2dp"
@@ -200,6 +201,7 @@
 
 
                                             <com.gifola.customfonts.MyTextView
+                                                android:id="@+id/text_mobileno"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:layout_margin="2dp"
@@ -251,6 +253,7 @@
 
 
                                                 <com.gifola.customfonts.MyTextView
+                                                    android:id="@+id/text_home"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="left|center_vertical"
@@ -261,6 +264,7 @@
                                                     android:textSize="10sp" />
 
                                                 <com.gifola.customfonts.MyTextView
+                                                    android:id="@+id/text_time"
 
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
@@ -273,6 +277,7 @@
 
 
                                                 <com.gifola.customfonts.MyTextView
+                                                    android:id="@+id/text_scheduledate"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="left|center_vertical"
@@ -296,6 +301,7 @@
                                             android:orientation="vertical">
 
                                             <androidx.cardview.widget.CardView
+                                                android:id="@+id/card_accept"
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
                                                 app:cardCornerRadius="4dp"
@@ -319,6 +325,7 @@
 
 
                                             <androidx.cardview.widget.CardView
+                                                android:id="@+id/card_reject"
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
                                                 app:cardCornerRadius="4dp"
@@ -1747,6 +1754,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -1778,6 +1786,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

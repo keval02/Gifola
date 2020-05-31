@@ -10,16 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.gifola.customfonts.MyTextViewBold;
 import com.suke.widget.SwitchButton;
 
 public class PrivacyPolicyActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView txt_title;
+    MyTextViewBold text_privacy1,text_privacy2,text_privacy3,text_privacy4;
+    SwitchButton switch_button1,switch_button2,switch_button3,switch_button4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_privacy_policy);
         setupToolbar();
+        fetchid();
 //        final com.suke.widget.SwitchButton switchButton = (com.suke.widget.SwitchButton)
 //                findViewById(R.id.switch_button);
 //
@@ -46,6 +50,19 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
+    }
+
+    private void fetchid() {
+
+        text_privacy1=findViewById(R.id.text_privacy1);
+        text_privacy2=findViewById(R.id.text_privacy2);
+        text_privacy3=findViewById(R.id.text_privacy3);
+        text_privacy4=findViewById(R.id.text_privacy4);
+        switch_button1=findViewById(R.id.switch_button1);
+        switch_button2=findViewById(R.id.switch_button2);
+        switch_button3=findViewById(R.id.switch_button3);
+        switch_button4=findViewById(R.id.switch_button4);
+
     }
 
     private void setupToolbar() {

@@ -13,13 +13,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.gifola.customfonts.MyTextView;
 import com.gifola.customfonts.MyTextViewBold;
 import com.gifola.customfonts.MyTextViewMedium;
+import com.pkmmte.view.CircularImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,11 +39,31 @@ public class GuestDetailActivity extends AppCompatActivity {
     Calendar myCalendar;
     MyTextViewMedium date1,date2,time1,time2;
 //    Date date;
+
+    CircularImageView profile_image;
+    MyTextViewBold text_name;
+    MyTextView text_mobileno;
+    ImageView img_fav;
+    LinearLayout btn_back,btn_send;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission_detail);
         setupToolbar();
+        fetchid();
+
+    }
+
+    private void fetchid() {
+
+        profile_image=findViewById(R.id.profile_image);
+        text_name=findViewById(R.id.text_name);
+        text_mobileno=findViewById(R.id.text_mobileno);
+        img_fav=findViewById(R.id.img_fav);
+        btn_back=findViewById(R.id.btn_back);
+        btn_send=findViewById(R.id.btn_send);
+
         // Selection of the spinner
         Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         card1=findViewById(R.id.card1);
@@ -58,7 +81,7 @@ public class GuestDetailActivity extends AppCompatActivity {
         time1=findViewById(R.id.time1);
         purposelayout=findViewById(R.id.purposelayout);
 
-       myCalendar = Calendar.getInstance();
+        myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -107,7 +130,7 @@ public class GuestDetailActivity extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(GuestDetailActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                     //   time1.setText( selectedHour + ":" + selectedMinute);
+                        //   time1.setText( selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -207,8 +230,6 @@ public class GuestDetailActivity extends AppCompatActivity {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, member);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
-
-
     }
 
     private void setupToolbar() {

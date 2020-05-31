@@ -60,7 +60,6 @@ public class MyProfileActivity extends AppCompatActivity {
     UserData userData;
     AdminAPI adminAPI;
     ProgressDialog progressDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +68,10 @@ public class MyProfileActivity extends AppCompatActivity {
         preferenceHelper = new SharedPreferenceHelper(getApplicationContext());
         adminAPI = SeriveGenerator.getAPIClass();
         progressDialog = new ProgressDialog(this);
+
         setupToolbar();
 
         profilephoto = findViewById(R.id.profilephoto);
-
         edtMobileNo = findViewById(R.id.mobile_no_tv);
         edtName = findViewById(R.id.name_edt);
         edtOrganization = findViewById(R.id.organization_edt);

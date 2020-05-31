@@ -6,23 +6,39 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.gifola.customfonts.MyEditText;
 
 public class AddRFCardActivity extends AppCompatActivity {
     String member[] = {"Select Location","Home","Office"};
     Toolbar toolbar;
     TextView txt_title;
+
+    MyEditText edit_rdcardno,edit_rdcardholdername;
+    LinearLayout btn_add;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_r_f_card);
         setupToolbar();
+        fetchid();
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, member);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
     }
+
+    private void fetchid() {
+        edit_rdcardholdername=findViewById(R.id.edit_rdcardholdername);
+        edit_rdcardno=findViewById(R.id.edit_rdcardno);
+        btn_add=findViewById(R.id.btn_add);
+    }
+
     private void setupToolbar() {
 
         toolbar = (Toolbar) findViewById(R.id.toolbarsignup);

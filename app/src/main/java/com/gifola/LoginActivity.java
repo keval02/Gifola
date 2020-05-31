@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.dhims.timerview.TimerTextView;
+import com.gifola.customfonts.MyEditText;
 import com.gifola.customfonts.MyTextViewMedium;
 import com.gifola.timer.CircularTimerListener;
 import com.gifola.timer.CircularTimerView;
@@ -29,10 +30,23 @@ public class LoginActivity extends AppCompatActivity {
     CardView btn_login;
     MyTextViewMedium resend,txt_forget_password,txt_signup;
 
+    MyEditText edit_mobileno,edit_password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        fetchid();
+
+
+
+
+    }
+
+    private void fetchid() {
+        edit_mobileno=findViewById(R.id.edit_mobileno);
+        edit_password=findViewById(R.id.edit_password);
+
         timertext=findViewById(R.id.timertext);
         btn_login=findViewById(R.id.btn_login);
         resend=findViewById(R.id.resend);
@@ -107,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 timertext.setVisibility(View.VISIBLE);
                 resend.setVisibility(View.GONE);
-                        new CountDownTimer(30000, 1000) {
+                new CountDownTimer(30000, 1000) {
 //                new CountDownTimer(3000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
@@ -141,9 +155,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 
     public static void hideKeyboard(Activity activity) {

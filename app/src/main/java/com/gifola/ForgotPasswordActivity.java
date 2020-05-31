@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.gifola.customfonts.MyEditText;
 import com.gifola.customfonts.MyTextViewMedium;
 import com.gifola.timer.CircularTimerView;
 
@@ -24,10 +25,23 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     CardView btn_login;
     MyTextViewMedium resend;
 
+    MyEditText edit_mobileno,edit_password,edit_confirmpassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        fetchid();
+
+
+
+    }
+
+    private void fetchid() {
+        edit_mobileno=findViewById(R.id.edit_mobileno);
+        edit_password=findViewById(R.id.edit_password);
+        edit_confirmpassword=findViewById(R.id.edit_confirmpassword);
+
         timertext=findViewById(R.id.timertext);
         btn_login=findViewById(R.id.btn_login);
         resend=findViewById(R.id.resend);
@@ -61,7 +75,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 timertext.setVisibility(View.VISIBLE);
                 resend.setVisibility(View.GONE);
-                        new CountDownTimer(30000, 1000) {
+                new CountDownTimer(30000, 1000) {
 //                new CountDownTimer(3000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
@@ -76,8 +90,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }.start();
             }
         });
-
-
     }
 
     public static void hideKeyboard(Activity activity) {

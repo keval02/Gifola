@@ -24,6 +24,7 @@
 
 
         <com.gifola.customfonts.MyTextViewMedium
+            android:id="@+id/text_top_name"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

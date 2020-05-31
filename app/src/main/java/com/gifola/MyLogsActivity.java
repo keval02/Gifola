@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.gifola.customfonts.MyEditText;
 import com.gifola.customfonts.MyTextViewMedium;
 import com.gifola.customfonts.MyTextViewRegular;
 
@@ -35,12 +36,27 @@ public class MyLogsActivity extends AppCompatActivity {
     Calendar myCalendar;
     CardView filtercard;
     ImageView infoclick;
+
+    MyEditText edit_search;
+    ImageView cancel;
+    LinearLayout btn_back,btn_filter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_logs);
 
         setupToolbar();
+
+        fetchid();
+
+    }
+
+    private void fetchid() {
+        edit_search=findViewById(R.id.edit_search);
+        cancel=findViewById(R.id.cancel);
+        btn_back=findViewById(R.id.btn_back);
+        btn_filter=findViewById(R.id.btn_filter);
 
         sublayout=findViewById(R.id.sublayout);
         menuimg=findViewById(R.id.menuimg);

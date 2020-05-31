@@ -6,22 +6,35 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.gifola.customfonts.MyEditText;
 
 public class AddUHFCardActivity extends AppCompatActivity {
     String member[] = {"Select Location","Home","Office"};
     Toolbar toolbar;
     TextView txt_title;
+    MyEditText edit_tagno,edit_vehiclename,edit_vehicleno;
+    LinearLayout btn_add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_u_h_f_card);
         setupToolbar();
+        fetchid();
         Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, member);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
+    }
+
+    private void fetchid() {
+        edit_tagno=findViewById(R.id.edit_tagno);
+        edit_vehiclename=findViewById(R.id.edit_vehiclename);
+        edit_vehicleno=findViewById(R.id.edit_vehicleno);
+        btn_add=findViewById(R.id.btn_add);
     }
 
     private void setupToolbar() {

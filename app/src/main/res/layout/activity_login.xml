@@ -183,6 +183,7 @@
                                                     android:background="@drawable/border">
 
                                                     <com.gifola.customfonts.MyEditText
+                                                        android:id="@+id/edit_mobileno"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="35dp"
                                                         android:layout_gravity="center_vertical"
@@ -231,6 +232,7 @@
                                                     android:background="@drawable/border">
 
                                                     <com.gifola.customfonts.MyEditText
+                                                        android:id="@+id/edit_password"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="35dp"
                                                         android:layout_gravity="center_vertical"

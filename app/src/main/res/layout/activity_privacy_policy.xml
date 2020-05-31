@@ -49,7 +49,6 @@
                             android:layout_height="40dp"
                             app:cardCornerRadius="4dp"
                             android:layout_margin="4dp"
-                            android:id="@+id/card3"
                             android:elevation="4dp"
                             >
 
@@ -60,6 +59,7 @@
                                 >
 
                                 <com.gifola.customfonts.MyTextViewBold
+                                    android:id="@+id/text_privacy1"
                                     android:layout_width="match_parent"
                                     android:layout_weight="1"
                                     android:layout_height="match_parent"
@@ -81,7 +81,7 @@
                                     android:layout_marginRight="5dp"
                                     android:layout_height="match_parent">
                                     <com.suke.widget.SwitchButton
-                                        android:id="@+id/switch_button"
+                                        android:id="@+id/switch_button1"
                                         app:sb_uncheck_color="@color/red"
                                         app:sb_checked_color="@color/green"
                                         app:sb_checkline_color="@color/green"
@@ -102,7 +102,6 @@
                             android:layout_height="40dp"
                             app:cardCornerRadius="4dp"
                             android:layout_margin="4dp"
-                            android:id="@+id/card3"
                             android:elevation="4dp"
                             >
 
@@ -123,7 +122,7 @@
                                     android:gravity="left|center_vertical"
                                     android:text="Switch OFF/ON notifications"
                                     android:paddingLeft="5dp"
-                                    android:id="@+id/text3"
+                                    android:id="@+id/text_privacy2"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="14sp" />
 
@@ -134,7 +133,7 @@
                                     android:layout_marginRight="5dp"
                                     android:layout_height="match_parent">
                                     <com.suke.widget.SwitchButton
-                                        android:id="@+id/switch_button"
+                                        android:id="@+id/switch_button2"
                                         app:sb_uncheck_color="@color/red"
                                         app:sb_checked_color="@color/green"
                                         app:sb_checked="true"
@@ -155,7 +154,6 @@
                             android:layout_height="40dp"
                             app:cardCornerRadius="4dp"
                             android:layout_margin="4dp"
-                            android:id="@+id/card3"
                             android:elevation="4dp"
                             >
 
@@ -176,7 +174,7 @@
                                     android:gravity="left|center_vertical"
                                     android:text="Keep my visit details secret"
                                     android:paddingLeft="5dp"
-                                    android:id="@+id/text3"
+                                    android:id="@+id/text_privacy3"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="14sp" />
 
@@ -187,7 +185,7 @@
                                     android:layout_marginRight="5dp"
                                     android:layout_height="match_parent">
                                     <com.suke.widget.SwitchButton
-                                        android:id="@+id/switch_button"
+                                        android:id="@+id/switch_button3"
                                         app:sb_uncheck_color="@color/red"
                                         app:sb_checked_color="@color/green"
                                         app:sb_checkline_color="@color/green"
@@ -229,7 +227,7 @@
                                     android:gravity="left|center_vertical"
                                     android:text="Hide my visiting"
                                     android:paddingLeft="5dp"
-                                    android:id="@+id/text3"
+                                    android:id="@+id/text_privacy4"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="14sp" />
 
@@ -240,7 +238,7 @@
                                     android:layout_marginRight="5dp"
                                     android:layout_height="match_parent">
                                     <com.suke.widget.SwitchButton
-                                        android:id="@+id/switch_button"
+                                        android:id="@+id/switch_button4"
                                         app:sb_uncheck_color="@color/red"
                                         app:sb_checked_color="@color/green"
                                         app:sb_checkline_color="@color/green"

@@ -1,5 +1,6 @@
 package com.gifola;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -15,11 +16,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.gifola.constans.AESenc;
+import com.gifola.apis.AdminAPI;
+import com.gifola.apis.SeriveGenerator;
 import com.gifola.constans.Global;
 import com.gifola.constans.SharedPreferenceHelper;
 import com.gifola.customfonts.MyEditText;
 import com.gifola.customfonts.MyTextViewMedium;
+import com.gifola.helper.AESPasswordAlgo;
+import com.gifola.helper.AESQRAlgorithm;
+import com.gifola.model.UserData;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -27,9 +33,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class QRScanActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -43,15 +52,21 @@ public class QRScanActivity extends AppCompatActivity {
     JSONObject jsonObject;
     String encryptedText = "";
     String generatedText = "";
+    String password = "";
     private Handler handler = new Handler();
     Runnable runnable;
     Boolean isGeneratedOnce = false;
+    UserData userData;
+    AdminAPI adminAPI;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_q_r_scan);
         preferenceHelper = new SharedPreferenceHelper(this);
+        adminAPI = SeriveGenerator.getAPIClass();
+        progressDialog = new ProgressDialog(this);
         setupToolbar();
     }
 
@@ -69,6 +84,7 @@ public class QRScanActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         toolbar.setNavigationIcon(R.drawable.back_1);
 
@@ -78,6 +94,18 @@ public class QRScanActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        userData = Global.INSTANCE.getUserMe(preferenceHelper);
+        password = userData.getApp_usr_password();
+        if (!password.equals("")) {
+            try {
+                String decryptPassword = AESPasswordAlgo.decrypt(password);
+                Log.e("decryptedPassword" , ""+ decryptPassword);
+                edtPwd.setText(decryptPassword);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
 
         runnable = new Runnable() {
             @Override
@@ -91,7 +119,17 @@ public class QRScanActivity extends AppCompatActivity {
         addPwdToQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                generateQRCodeData();
+                String getEnteredPasswordText = edtPwd.getText().toString().trim();
+                if (getEnteredPasswordText != password) {
+                    try {
+                        String encryptPassword = AESPasswordAlgo.encrypt(getEnteredPasswordText);
+                        Log.e("encryptedPassword" , ""+ encryptPassword);
+                        userData.setApp_usr_password(encryptPassword);
+                        saveUserProfile(userData);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 
@@ -116,9 +154,9 @@ public class QRScanActivity extends AppCompatActivity {
         }
 
         try {
-            encryptedText = AESenc.encrypt(generatedText);
+            encryptedText = AESQRAlgorithm.encrypt(generatedText);
             Log.e("textEncrypt", "" + encryptedText);
-            Log.e("textDecrypy", "" + AESenc.decrypt(encryptedText));
+            Log.e("textDecrypy", "" + AESQRAlgorithm.decrypt(encryptedText));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,6 +198,33 @@ public class QRScanActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+
+    private void saveUserProfile(final UserData userData) {
+        progressDialog.show();
+        Gson gson = new Gson();
+        String jsonDATA = gson.toJson(userData);
+        Log.e("data" , "" + jsonDATA);
+        Call<ResponseBody> responseBodyCall = adminAPI.UpdateUserDetails(jsonDATA);
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                progressDialog.hide();
+                if (response.code() == 200) {
+                    Global.INSTANCE.setUserMe(userData, preferenceHelper);
+                    generateQRCodeData();
+                } else {
+                    Global.INSTANCE.displayToastMessage(getString(R.string.message_something_went_wrong), getApplicationContext());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                progressDialog.hide();
+                Global.INSTANCE.displayToastMessage(getString(R.string.message_something_went_wrong), getApplicationContext());
+            }
+        });
     }
 
     @Override

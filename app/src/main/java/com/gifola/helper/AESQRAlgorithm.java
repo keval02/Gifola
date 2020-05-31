@@ -1,4 +1,4 @@
-package com.gifola.constans;
+package com.gifola.helper;
 import android.os.Build;
 
 import java.security.Key;
@@ -6,7 +6,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
-public class AESenc {
+public class AESQRAlgorithm {
     private static final String ALGO = "AES";
     private static final byte[] keyValue =
             new byte[]{'T', 'h', 'e', 'B', 'e', 's', 't', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y'};

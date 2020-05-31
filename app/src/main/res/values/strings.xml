@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GIFOLA</string>
+
+
+
+
+    // Validation Strings
+
+    <string name="message_valid_mobile_num">Please enter valid mobile number!</string>
+    <string name="message_valid_email_id">Please enter valid Email-id!</string>
+    <string name="message_something_went_wrong">Something went wrong! Please try after some time.</string>
+    <string name="resend_otp">Something went wrong! Please resend otp.</string>
+</resources>

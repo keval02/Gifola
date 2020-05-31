@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:focusableInTouchMode="true"
+    android:gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardclick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:id="@+id/spinGeneral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+
+                        android:orientation="vertical">
+<!--                        android:background="@drawable/draw_rate_btn"-->
+
+                        <com.gifola.customfonts.MyTextViewBold
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Member Info"
+                            android:textColor="@color/blue"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_margin="5dp">
+
+                       <com.gifola.customfonts.MyTextViewMedium
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_weight="1.8"
+                           android:layout_gravity="left"
+                           android:gravity="left"
+                           android:textSize="12sp"
+                           android:text="Organisation:"
+                           ></com.gifola.customfonts.MyTextViewMedium>
+
+                        <com.gifola.customfonts.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="Mindkey technologies"
+                            ></com.gifola.customfonts.MyTextView>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_margin="5dp">
+
+                        <com.gifola.customfonts.MyTextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.8"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="Designation:"
+                            ></com.gifola.customfonts.MyTextViewMedium>
+
+                        <com.gifola.customfonts.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="Vise President"
+                            ></com.gifola.customfonts.MyTextView>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_margin="5dp">
+
+                        <com.gifola.customfonts.MyTextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.8"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="Email ID:"
+                            ></com.gifola.customfonts.MyTextViewMedium>
+
+                        <com.gifola.customfonts.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="email@gmail.com"
+                            ></com.gifola.customfonts.MyTextView>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_margin="5dp">
+
+                        <com.gifola.customfonts.MyTextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.8"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="Work Address:"
+                            ></com.gifola.customfonts.MyTextViewMedium>
+
+                        <com.gifola.customfonts.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:textSize="12sp"
+                            android:text="surat near nagar road, 212198"
+                            ></com.gifola.customfonts.MyTextView>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/signin_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/draw_rate_btn"
+                        android:orientation="vertical">
+
+                        <com.gifola.customfonts.MyTextViewRegular
+                            android:id="@+id/submit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="OK"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/img_no"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/cancelred"
+                        android:tint="@color/darkgrey"
+
+
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

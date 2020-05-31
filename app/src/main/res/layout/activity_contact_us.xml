@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ContactUsActivity">
+
+    <include layout="@layout/custom_toolbar_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <!--        android:background="@drawable/button_layout_grey"-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="5dp"
+                                android:layout_height="wrap_content">
+
+                                <com.gifola.customfonts.MyTextViewBold
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.7"
+                                    android:text="To"
+                                    android:layout_marginLeft="5dp"
+                                    android:textSize="16sp"></com.gifola.customfonts.MyTextViewBold>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1.1"
+                                        android:background="@drawable/border">
+
+                                        <com.gifola.customfonts.MyEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="35dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/botton_tranparent_line"
+                                            android:gravity="center_vertical"
+                                            android:inputType="number"
+                                            android:padding="6dp"
+                                            android:singleLine="true"
+                                            android:focusable="false"
+                                            android:enabled="false"
+                                            android:text="admin@gmail.com"
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"></com.gifola.customfonts.MyEditText>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="5dp"
+                                android:layout_height="wrap_content">
+                                <com.gifola.customfonts.MyTextViewBold
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.7"
+                                    android:text="Subject"
+                                    android:layout_marginLeft="5dp"
+                                    android:textSize="16sp"></com.gifola.customfonts.MyTextViewBold>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1.1"
+                                        android:background="@drawable/border">
+
+                                        <com.gifola.customfonts.MyEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="35dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/botton_tranparent_line"
+                                            android:gravity="center_vertical"
+                                            android:hint="Enter Subject here !!"
+                                            android:inputType="textCapWords"
+                                            android:padding="6dp"
+                                            android:singleLine="true"
+                                            android:text=""
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"></com.gifola.customfonts.MyEditText>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="5dp"
+                                android:layout_height="wrap_content">
+                                <com.gifola.customfonts.MyTextViewBold
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.7"
+                                    android:text="Message"
+                                    android:layout_marginLeft="5dp"
+                                    android:textSize="16sp"></com.gifola.customfonts.MyTextViewBold>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1.1"
+                                        android:background="@drawable/border">
+
+                                        <com.gifola.customfonts.MyEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="top"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/botton_tranparent_line"
+                                            android:gravity="top"
+                                            android:hint="Enter Message here !!"
+                                            android:inputType="textCapWords"
+                                            android:padding="6dp"
+                                            android:minLines="5"
+                                            android:minHeight="200dp"
+                                            android:text=""
+                                            android:textColor="@color/colorPrimary"
+                                            android:textSize="14sp"></com.gifola.customfonts.MyEditText>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        app:cardCornerRadius="4dp"
+                        android:id="@+id/backcard"
+                        android:layout_margin="4dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        android:elevation="4dp"
+                        >
+
+                        <com.gifola.customfonts.MyTextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center|center_vertical"
+                            android:text="Back"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        app:cardCornerRadius="4dp"
+                        android:layout_margin="4dp"
+                        android:id="@+id/sendcard"
+                        android:elevation="4dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        >
+
+                        <com.gifola.customfonts.MyTextViewMedium
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center|center_vertical"
+                            android:text="Send"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

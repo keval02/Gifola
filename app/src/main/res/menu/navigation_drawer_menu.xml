@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:id="@+id/menu_top1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/mylocation"
+            android:icon="@drawable/adress"
+            android:title="My Locations" />
+
+    </group>
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/addmember"
+            android:icon="@drawable/adduser"
+            android:title="Add/Remove Sub Member" />
+
+        <item
+            android:id="@+id/addrfcard"
+            android:icon="@drawable/card"
+            android:title="Add/Remove RF Card" />
+        <item
+            android:id="@+id/adduhfcard"
+            android:icon="@drawable/car2"
+            android:title="Add/Remove Car UHF Tag" />
+    </group>
+
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/mylogs"
+            android:icon="@drawable/call"
+            android:title="My Logs" />
+
+        <item
+            android:id="@+id/privacysettings"
+            android:icon="@drawable/support"
+            android:title="Privacy Settings" />
+        <item
+            android:id="@+id/contatcus"
+            android:icon="@drawable/contactus"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/rateus"
+            android:icon="@drawable/starc"
+            android:title="Rate Us" />
+    </group>
+
+
+    <group
+        android:id="@+id/menu_bottom2"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/disclaimer"
+            android:title="Disclaimer" />
+        <item
+            android:id="@+id/terms"
+            android:title="Terms &amp; Conditions" />
+        <item
+            android:id="@+id/privacypolicy"
+            android:title="Privacy Policy" />
+
+        <item
+            android:id="@+id/aboutus"
+            android:title="About us" />
+
+        <item
+            android:id="@+id/faq"
+            android:title="FAQ's" />
+
+        <item
+            android:id="@+id/logout"
+            android:title="Logout" />
+    </group>
+
+
+</menu>

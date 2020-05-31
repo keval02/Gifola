@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".OTPActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_otp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.gifola.customfonts.MyTextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:text="Verification Code"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp" />
+
+
+            <com.gifola.customfonts.MyTextView
+                android:id="@+id/emailmobile"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal"
+                android:text="send to +91 9998887771"
+                android:textColor="@color/grey"
+                android:textSize="18sp" />
+
+            <com.gifola.customfonts.MyTextViewMedium
+                android:id="@+id/changenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="  EDIT/CHANGE NUMBER?"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_weight="1.5"
+                android:gravity="bottom"
+                android:orientation="vertical">
+                <!--        android:layout_weight="1.8"-->
+
+
+                <LinearLayout
+                    android:id="@+id/secondlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:gravity="bottom"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <com.gifola.customfonts.MyTextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="HANG ON! OTP CODE BEING SELF DETECTED"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.gifola.timer.CircularTimerView
+                            android:id="@+id/progress_circular"
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            android:layout_gravity="center"
+                            android:visibility="visible"
+                            app:backgroundColor="@color/blue"
+                            app:backgroundWidth="15"
+                            android:minWidth="15dp"
+
+                            android:importantForAutofill="yes"
+                            app:isClockwise="true"
+                            app:maxValue="100"
+                            app:prefix=""
+                            android:soundEffectsEnabled="true"
+                            app:progressBackgroundColor="#eee"
+                            app:progressColor="@color/darkblue"
+                            app:progressText="Remaining..."
+                            app:progressTextColor="#eee"
+                            app:startingPoint="bottom"
+                            app:suffix=""
+                            app:textSize="28sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:id="@+id/resendlayout"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <com.gifola.customfonts.MyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="OTP not detected, kindly check your mobile signal strength and try again"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <com.gifola.customfonts.MyTextViewRegular
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Didn't received code?"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp" />
+
+                    <com.gifola.customfonts.MyTextViewMedium
+                        android:id="@+id/resendtxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="  RESEND NOW"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

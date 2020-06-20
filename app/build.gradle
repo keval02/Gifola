@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
     implementation 'com.google.zxing:core:3.3.2'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
 
 //    implementation project(path: ':circulartimerview')
 //    implementation 'com.github.uzairiqbal91:CircularTimerView:1.0'

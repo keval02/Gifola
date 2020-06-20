@@ -1,5 +1,6 @@
 package com.gifola.model
 
+import okhttp3.MultipartBody
 import java.io.Serializable
 
 class UserData() : Serializable{
@@ -17,4 +18,5 @@ class UserData() : Serializable{
     var app_usr_status: Int? = 0
     var app_usr_work_address: String? = ""
     var isactive: Boolean? = false
+    var profilePic : MultipartBody.Part? = null
 }

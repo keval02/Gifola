@@ -1,45 +1,107 @@
 package com.gifola;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ContextThemeWrapper;
-import androidx.appcompat.widget.Toolbar;
-
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.DatePicker;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
-import com.gifola.customfonts.MyTextViewRegular;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Calendar;
+import com.gifola.adapter.LocationListAdapter;
+import com.gifola.apis.ApiURLs;
+import com.gifola.apis.ServiceHandler;
+import com.gifola.constans.Global;
+import com.gifola.constans.SharedPreferenceHelper;
+import com.gifola.customfonts.MyTextViewBold;
+import com.gifola.model.LocationDataModel;
+import com.gifola.model.LocationDataModelItem;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyLocationsActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView txt_title;
-    Dialog dialog;
-    LinearLayout editimg;
+    RecyclerView rv_location;
+    SharedPreferenceHelper preferenceHelper;
+    ProgressDialog progressDialog;
+    String usersMobileNum = "";
+    List<LocationDataModelItem> locationDataModelItems = new ArrayList<>();
+    LocationListAdapter locationListAdapter;
+    MyTextViewBold txtNoDataFound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_locations);
         setupToolbar();
-        editimg=findViewById(R.id.editimg);
-        editimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddressDialoge();
+        preferenceHelper = new SharedPreferenceHelper(this);
+        progressDialog = new ProgressDialog(this);
+        rv_location = findViewById(R.id.rv_location);
+        txtNoDataFound = findViewById(R.id.txt_no_data_found);
+        usersMobileNum = Global.INSTANCE.getUserMe(preferenceHelper).getApp_usr_mobile();
+        new GetUsersLocations(usersMobileNum, this).execute();
+    }
+
+    class GetUsersLocations extends AsyncTask<Void, Void, String> {
+        String mobileNum = "";
+        Activity activity;
+
+        public GetUsersLocations(String mobileNum, Activity activity) {
+            this.mobileNum = mobileNum;
+            this.activity = activity;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String json = "";
+            try {
+                json = new ServiceHandler().makeServiceCall(ApiURLs.BASE_URL + ApiURLs.GET_USERS_LOCATIONS + mobileNum, ServiceHandler.GET);
+            } catch (Exception e) {
+                Log.e("exception", e.getMessage());
             }
-        });
+
+
+            return json;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.hide();
+            try {
+                if (s == null || s.isEmpty()) {
+                    rv_location.setVisibility(View.GONE);
+                    txtNoDataFound.setVisibility(View.VISIBLE);
+                } else {
+                    String jsonResponse = s;
+                    Gson gson = new Gson();
+                    LocationDataModel locationDataModel = gson.fromJson(jsonResponse, LocationDataModel.class);
+                    locationDataModelItems.addAll(locationDataModel);
+                    locationListAdapter = new LocationListAdapter(activity, locationDataModelItems);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false);
+                    rv_location.setLayoutManager(layoutManager);
+                    rv_location.setAdapter(locationListAdapter);
+                    rv_location.setVisibility(View.VISIBLE);
+                    txtNoDataFound.setVisibility(View.GONE);
+                }
+            } catch (Exception e) {
+                txtNoDataFound.setVisibility(View.VISIBLE);
+                Log.e("exception", e.getMessage());
+            }
+        }
     }
 
     private void setupToolbar() {
@@ -62,42 +124,5 @@ public class MyLocationsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-    }
-
-    public void AddressDialoge()
-    {
-        dialog = new Dialog(new ContextThemeWrapper(this, R.style.AppTheme));
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(true);
-        dialog.setContentView(R.layout.dialoge_add_address);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-        MyTextViewRegular submit = (MyTextViewRegular) dialog.findViewById(R.id.submit);
-
-        ImageView img_no=(ImageView)dialog.findViewById(R.id.img_no);
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-
-            }
-        });
-
-        img_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-
-            }
-        });
-
-        dialog.show();
-
     }
 }

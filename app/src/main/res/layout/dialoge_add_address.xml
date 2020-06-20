@@ -97,7 +97,6 @@
                             android:gravity="top"
                             android:hint="Enter Address here !!"
                             android:padding="6dp"
-                            android:text="Surat Nagar, Dhanwapur Road Gurgaon - 122006"
                             android:textColor="@color/colorPrimary"
                             android:textSize="14sp"></com.gifola.customfonts.MyEditText>
 

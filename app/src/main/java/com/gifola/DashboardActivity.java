@@ -1,6 +1,7 @@
 package com.gifola;
 
 import android.app.Dialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -70,6 +71,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     ImageView infoclick;
     SharedPreferenceHelper appPreference;
     AdminAPI adminAPI;
+    private BluetoothAdapter mBluetoothAdapter = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,9 +129,15 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         qrscanimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                if (mBluetoothAdapter.isEnabled()) {
+                    Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }else {
+                    Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(turnBTon, 1);
+                }
             }
         });
 

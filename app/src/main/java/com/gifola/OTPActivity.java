@@ -6,6 +6,8 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -51,6 +53,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.gifola.helper.OtpEditText;
 
 public class OTPActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GetOtpInterface, GoogleApiClient.OnConnectionFailedListener {
@@ -67,6 +70,7 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
     AdminAPI adminAPI;
     SharedPreferenceHelper preferenceHelper;
     Boolean isAlreadyRegistered = false;
+    OtpEditText et_otp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,7 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
         resendlayout = findViewById(R.id.resendlayout);
         changenumber = findViewById(R.id.changenumber);
         mobileNumberTextView = findViewById(R.id.emailmobile);
+        et_otp = findViewById(R.id.et_otp);
         mobileNum = getIntent().getStringExtra(Global.INSTANCE.getMobileNumberText());
         isAlreadyRegistered = getIntent().getBooleanExtra(Global.INSTANCE.isAlreadyRegistered() , false);
         preferenceHelper = new SharedPreferenceHelper(getApplicationContext());
@@ -117,7 +122,7 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
                 progressBar.setText("TimeOut");
                 resendlayout.setVisibility(View.VISIBLE);
             }
-        }, 30, TimeFormatEnum.SECONDS, 30);
+        }, 90, TimeFormatEnum.SECONDS, 90);
 
         progressBar.setProgress(0);
         progressBar.startTimer();
@@ -140,7 +145,38 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
                 onBackPressed();
             }
         });
+        et_otp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(et_otp.getText().length() == 4){
+                    String otp = et_otp.getText().toString().trim();
+                    if (generatedOTP.equals(otp)) {
+                        if(isAlreadyRegistered){
+                            preferenceHelper.setBoolean(Global.INSTANCE.isLoggedIn(), true);
+                            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finishAffinity();
+                        }else {
+                            SendUserMobileNumber(mobileNum);
+                        }
+
+                    }/* else {
+                        Global.INSTANCE.displayToastMessage(getString(R.string.resend_otp), getApplicationContext());
+                    }*/
+                }
+            }
+        });
 
         smsListener();
         sendOTPRequest();
@@ -172,20 +208,7 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
 
     @Override
     public void onOtpReceived(String otp) {
-        if (generatedOTP.equals(otp)) {
-            if(isAlreadyRegistered){
-                preferenceHelper.setBoolean(Global.INSTANCE.isLoggedIn(), true);
-                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }else {
-                SendUserMobileNumber(mobileNum);
-            }
-
-        } else {
-            Global.INSTANCE.displayToastMessage(getString(R.string.resend_otp), getApplicationContext());
-        }
+        et_otp.setText(otp);
     }
 
     @Override

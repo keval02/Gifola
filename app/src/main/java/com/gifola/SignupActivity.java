@@ -54,60 +54,6 @@ public class SignupActivity extends AppCompatActivity {
         progressBar = new ProgressDialog(this);
 
 
-//        btnReset = findViewById(R.id.btnRestart);
-//        btnResend = findViewById(R.id.btnResend);
-//        secondlayout = findViewById(R.id.secondlayout);
-//        progressBar = findViewById(R.id.progress_circular);
-//        progressBar.setProgress(0);
-
-
-//        progressBar.setCircularTimerListener(new CircularTimerListener() {
-//            @Override
-//            public String updateDataOnTick(long remainingTimeInMs) {
-//                return String.valueOf((int)Math.ceil((remainingTimeInMs / 1000.f)));
-//            }
-//
-//            @Override
-//            public void onTimerFinished() {
-////                Toast.makeText(LoginActivity.this, "FINISHED", Toast.LENGTH_SHORT).show();
-//                progressBar.setPrefix("");
-//                progressBar.setSuffix("");
-//                progressBar.setText("Time Out ...");
-//                btnResend.setVisibility(View.VISIBLE);
-//            }
-//        }, 2, TimeFormatEnum.SECONDS, 2);
-
-
-//        btnReset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                progressBar.setProgress(0);
-//                progressBar.startTimer();
-//                progressBar.setVisibility(View.VISIBLE);
-//                btnResend.setVisibility(View.GONE);
-//                hideKeyboard(LoginActivity.this);
-//                secondlayout.setVisibility(View.VISIBLE);
-//            }
-//        });
-//
-//        btnResend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                progressBar.setProgress(0);
-//                progressBar.startTimer();
-//                btnResend.setVisibility(View.GONE);
-//                hideKeyboard(LoginActivity.this);
-////                Intent intent=new Intent(getApplicationContext(),DashboardActivity.class);
-////                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-////                startActivity(intent);
-//            }
-//        });
-////        long futureTimestamp = System.currentTimeMillis() + (10 * 60 * 60 * 1000);
-//        long futureTimestamp = System.currentTimeMillis() + (30000);
-//        TimerTextView timerText = (TimerTextView) findViewById(R.id.timerText);
-//        timerText.setEndTime(futureTimestamp);
-//        Log.e("futureTimestamp", String.valueOf(futureTimestamp));
-
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +62,6 @@ public class SignupActivity extends AppCompatActivity {
                 if (edtMobileNo.length() != 10) {
                     Global.INSTANCE.displayToastMessage(getString(R.string.message_valid_mobile_num), getApplicationContext());
                 } else {
-                    //checkUsersMobileNumberAndProceedFurther(enteredMobileNumber);
                     new CheckUserMobileNumber(enteredMobileNumber).execute();
                 }
             }
@@ -128,11 +73,9 @@ public class SignupActivity extends AppCompatActivity {
                 timertext.setVisibility(View.VISIBLE);
                 resend.setVisibility(View.GONE);
                 new CountDownTimer(30000, 1000) {
-//                new CountDownTimer(3000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         timertext.setText("seconds remaining: " + millisUntilFinished / 1000);
-//                        timertext.setText("" + millisUntilFinished / 1000);
                     }
 
                     public void onFinish() {
@@ -192,7 +135,7 @@ public class SignupActivity extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             String json = "";
             try {
-                String postURL = ApiURLs.CHECK_USERS_MOBILE_NO + mobileNo;
+                String postURL = ApiURLs.CHECK_USERS_MOBILE_NO  +  mobileNo;
                 json = new ServiceHandler().makeServiceCall(ApiURLs.BASE_URL + postURL, ServiceHandler.GET);
             } catch (Exception e) {
                 Log.e("exception", e.getMessage());

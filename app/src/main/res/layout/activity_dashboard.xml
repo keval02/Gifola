@@ -12,43 +12,37 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/containerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/containerView"
             android:orientation="vertical">
 
             <!--<include-->
             <!--layout="@layout/custom_toolbar" />-->
-            <include
-                layout="@layout/custom_toolbar" />
+            <include layout="@layout/custom_toolbar" />
 
             <include
                 layout="@layout/inside_main_activity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
         </LinearLayout>
 
 
-
         <com.google.android.material.navigation.NavigationView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/nav_drawer"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/white"
-            app:itemTextColor="@color/darkgrey"
             android:divider="#FFFFFF"
             android:dividerHeight="1dp"
+            app:itemTextColor="@color/darkgrey"
 
-                app:theme="@style/NavigationViewStyle"
+            app:menu="@menu/navigation_drawer_menu"
 
-                app:menu="@menu/navigation_drawer_menu"
-           />
-<!--        app:headerLayout="@layout/navigation_header"-->
+            app:theme="@style/NavigationViewStyle" />
 
 
     </androidx.drawerlayout.widget.DrawerLayout>

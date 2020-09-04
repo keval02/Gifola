@@ -18,5 +18,9 @@ class UserData() : Serializable{
     var app_usr_status: Int? = 0
     var app_usr_work_address: String? = ""
     var isactive: Boolean? = false
+    var isSubMember: Boolean? = false
+    var isOnlyAppUser: Boolean? = false
+    var mem_id : Int?=0
+    var mem_cust_id : Int?=0
     var profilePic : MultipartBody.Part? = null
 }

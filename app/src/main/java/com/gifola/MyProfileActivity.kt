@@ -40,14 +40,11 @@ import com.gifola.helper.ImageFileFilter
 import com.gifola.helper.ImagePath
 import com.gifola.model.UserData
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_my_profile.*
 import kotlinx.android.synthetic.main.custom_toolbar_back.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -119,6 +116,10 @@ class MyProfileActivity : AppCompatActivity() {
         }
         if (userData!!.app_usr_dob != null && userData!!.app_usr_dob != "") {
             dob = userData!!.app_usr_dob
+            val splitDob = dob?.split("T")
+            val getDateFromDOB = splitDob?.get(0)
+            dob = getDateFromDOB
+
         }
 
         if (userData!!.app_pic != null && userData!!.app_pic != "") {
@@ -255,6 +256,7 @@ class MyProfileActivity : AppCompatActivity() {
 
         })
     }
+
 
 
     private fun setupToolbar() {

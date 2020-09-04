@@ -12,9 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-
-
         <include layout="@layout/custom_toolbar_back" />
 
         <LinearLayout
@@ -48,6 +45,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <com.gifola.customfonts.MyTextViewMedium
@@ -67,6 +65,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <com.gifola.customfonts.MyTextViewBold
@@ -92,7 +91,7 @@
                         android:orientation="horizontal">
 
                         <com.gifola.customfonts.MyEditText
-                            android:id="@+id/edt_pwd"
+                            android:id="@+id/edtPwd"
                             android:layout_width="300dp"
                             android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
@@ -153,7 +152,7 @@
                                     android:orientation="horizontal">
 
                                     <com.gifola.customfonts.MyTextViewMedium
-                                        android:id="@+id/btn_add_pwd"
+                                        android:id="@+id/addPwdToQR"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_marginLeft="5dp"
@@ -185,6 +184,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <com.gifola.customfonts.MyTextViewMedium
@@ -207,24 +207,17 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <!--        <EditText-->
-            <!--            android:id="@+id/send_data"-->
-            <!--            android:text="write text"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"/>-->
-
             <LinearLayout
                 android:id="@+id/bluetoothListLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:visibility="visible"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Available devices: "/>
+                    android:text="Already paired devices: "/>
                 <ListView
                     android:id="@+id/listView"
                     android:layout_marginTop="6dp"
@@ -237,6 +230,23 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView"
                     tools:layout_editor_absoluteY="0dp"></ListView>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="If you can't see your device here.. Please go to bluetooth settings and pair with your device first.."/>
+                <TextView
+                    android:id="@+id/goToBluetoothSettings"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:textColor="#3F51B5"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:text="CLICK HERE TO CONNECT"/>
             </LinearLayout>
 
             <Button
@@ -270,8 +280,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="80dp"
+                            android:gravity="center"
+                            android:paddingLeft="50dp"
                             android:text="CHECKIN with Bluetooth"
 
                             android:textSize="16sp"></com.gifola.customfonts.MyTextViewBold>
@@ -280,22 +290,13 @@
                 </LinearLayout>
 
 
-                <!--            <LinearLayout-->
-                <!--                android:layout_width="300dp"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:background="@drawable/circularborder"-->
-                <!--                android:orientation="vertical">-->
-
-
-                <!--            </LinearLayout>-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:src="@drawable/tickblue"></ImageView>
                 </FrameLayout>
 
@@ -310,6 +311,7 @@
                 android:visibility="visible">
 
                 <LinearLayout
+                    android:id="@+id/checkInWithNFC"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -322,34 +324,26 @@
                         app:cardCornerRadius="20dp">
 
                         <com.gifola.customfonts.MyTextViewBold
+                            android:id="@+id/nfcTV"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="80dp"
-                            android:text="CHECKIN with NFC"
+                            android:gravity="center"
+                            android:paddingLeft="50dp"
+                            android:text="Touch devices to send NFC data!"
                             android:textSize="16sp"></com.gifola.customfonts.MyTextViewBold>
 
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
 
-                <!--            <LinearLayout-->
-                <!--                android:layout_width="300dp"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:background="@drawable/circularborder"-->
-                <!--                android:orientation="vertical">-->
-
-
-                <!--            </LinearLayout>-->
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:src="@drawable/crossred"></ImageView>
                 </FrameLayout>
 

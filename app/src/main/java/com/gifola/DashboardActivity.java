@@ -30,8 +30,6 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -44,13 +42,13 @@ import com.gifola.apis.ApiURLs;
 import com.gifola.apis.SeriveGenerator;
 import com.gifola.apis.ServiceHandler;
 import com.gifola.constans.Global;
+import com.gifola.constans.SharedPreferenceHelper;
 import com.gifola.customfonts.MyTextViewBold;
+import com.gifola.customfonts.MyTextViewMedium;
+import com.gifola.customfonts.MyTextViewRegular;
 import com.gifola.model.UserData;
 import com.gifola.model.UserDataModel;
 import com.google.android.material.navigation.NavigationView;
-import com.gifola.constans.SharedPreferenceHelper;
-import com.gifola.customfonts.MyTextViewMedium;
-import com.gifola.customfonts.MyTextViewRegular;
 import com.google.gson.Gson;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -58,8 +56,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.gifola.apis.ApiURLs.IMAGE_URL;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Fragment fragment;
-    private FragmentManager fragmentManager;
     LinearLayout containerView;
     NavigationView navigationView;
     DrawerLayout myDrawerLayout;
@@ -72,7 +68,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     SharedPreferenceHelper appPreference;
     AdminAPI adminAPI;
     private BluetoothAdapter mBluetoothAdapter = null;
-
+    String memberId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +81,11 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         myDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         adminAPI = SeriveGenerator.getAPIClass();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        String mobileNo = Global.INSTANCE.getUserMe(appPreference).getApp_usr_mobile();
+        new CheckUserMobileNumber(mobileNo).execute();
 
+
+        setSupportActionBar(toolbar);
         sublayout = findViewById(R.id.sublayout);
         menuimg = findViewById(R.id.menuimg);
         infoclick = findViewById(R.id.infoclick);
@@ -134,7 +133,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                }else {
+                } else {
                     Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(turnBTon, 1);
                 }
@@ -162,22 +161,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         });
 
         View headerView = LayoutInflater.from(this).inflate(R.layout.navigation_header, navigationView, false);
-//        View headerView = LayoutInflater.from(this).inflate(R.layout.drawer_header_servicecenter, navigationView, false);
-//        headerView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(i);
-//            }
-//        });
         MyTextViewMedium editprofile = (MyTextViewMedium) headerView.findViewById(R.id.editprofile);
         MyTextViewBold userName = (MyTextViewBold) headerView.findViewById(R.id.txt_user_name);
         final CircleImageView userProfile = (CircleImageView) headerView.findViewById(R.id.profile_image);
         userName.setText(Global.INSTANCE.getUserMe(appPreference).getApp_usr_name());
 
         String imagePath = Global.INSTANCE.getUserMe(appPreference).getApp_pic();
-        if(imagePath != null || !imagePath.equals("null") || imagePath.equals("")){
+        if (imagePath != null || !imagePath.equals("null") || imagePath.equals("")) {
             imagePath = IMAGE_URL + imagePath;
             Glide.with(this)
                     .load(imagePath)
@@ -185,7 +175,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                     .addListener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Log.e("imageException" , e.getMessage());
+                            Log.e("imageException", e.getMessage());
                             return false;
                         }
 
@@ -222,29 +212,12 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 //below line used to remove shadow of drawer
                 myDrawerLayout.setScrimColor(Color.TRANSPARENT);
 
-                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-                {
-                    containerView.setTranslationX(moveFactor);
-                }
-                else
-                {
-                    TranslateAnimation anim = new TranslateAnimation(lastTranslate, moveFactor, 0.0f, 0.0f);
-                    anim.setDuration(0);
-                    anim.setFillAfter(true);
-                    containerView.startAnimation(anim);
-
-                    lastTranslate = moveFactor;
-                }*/
             }
         };
 
         myDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
-        if(appPreference.getBoolean(Global.INSTANCE.isEnteredFirstTime() , false)){
-            String mobileNo = Global.INSTANCE.getUserMe(appPreference).getApp_usr_mobile();
-            new CheckUserMobileNumber(mobileNo).execute();
-        }
     }
 
     class CheckUserMobileNumber extends AsyncTask<Void, Void, String> {
@@ -286,7 +259,13 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                         UserDataModel dataModel = gson.fromJson(jsonResponse, UserDataModel.class);
                         UserData userData = dataModel.get(0);
                         Global.INSTANCE.setUserMe(userData, appPreference);
-                        appPreference.setBoolean(Global.INSTANCE.isEnteredFirstTime() , false);
+                        appPreference.setBoolean(Global.INSTANCE.isEnteredFirstTime(), false);
+
+                        Menu nav_Menu = navigationView.getMenu();
+                        if (userData.isOnlyAppUser() == true) {
+                            nav_Menu.findItem(R.id.addmember).setVisible(false);
+                        }
+
                     }
 
                 }
@@ -299,7 +278,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.mylocation) {
             Intent intent = new Intent(getApplicationContext(), MyLocationsActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -338,41 +316,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
-//        else if (id == R.id.logout) {
-//        dialog = new Dialog(new ContextThemeWrapper(this, R.style.AppTheme));
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setCancelable(false);
-//        dialog.setContentView(R.layout.dialoge_logout);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//
-////        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-////        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//
-//        txtyes = (MyTextViewRegular) dialog.findViewById(R.id.logout);
-//        txtno = (MyTextViewRegular) dialog.findViewById(R.id.cancel);
-//
-//
-//        txtyes.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent navigate = new Intent(MainActivity.this, LoginActivity.class);
-//                navigate.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                appPref.clearData(getApplicationContext());
-//                startActivity(navigate);
-//                finish();
-//            }
-//        });
-//
-//        txtno.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        dialog.show();
-//    }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

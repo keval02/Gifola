@@ -30,6 +30,7 @@ import com.gifola.helper.MySMSBroadCastReceiver;
 import com.gifola.helper.SimpleOTPGenerator;
 import com.gifola.helper.SmsHashCodeHelper;
 import com.gifola.model.UserData;
+import com.gifola.model.UserDataModel;
 import com.gifola.timer.CircularTimerListener;
 import com.gifola.timer.CircularTimerView;
 import com.gifola.timer.TimeFormatEnum;
@@ -42,13 +43,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -226,13 +220,14 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
             this.mobileNumber = mobileNumber;
             this.message = message;
             this.otp = otp;
+
         }
 
         @Override
         protected String doInBackground(Void... voids) {
             String otpMessage = "# Your otp code is : " + otp + " 2gc81RJaZG6.";
             Uri.Builder builder = new Uri.Builder();
-            builder.scheme("http")
+            /*builder.scheme("http")
                     .authority("sms.bulksmsserviceproviders.com")
                     .appendPath("api")
                     .appendPath("send_http.php")
@@ -240,8 +235,18 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
                     .appendQueryParameter("mobiles", mobileNumber)
                     .appendQueryParameter("route", "B")
                     .appendQueryParameter("sender", "GIFOLA")
-                    .appendQueryParameter("message", otpMessage);
-
+                    .appendQueryParameter("message", otpMessage);*/
+            builder.scheme("http")
+                    .authority("api.msg91.com")
+                    .appendPath("api")
+                    .appendPath("v5")
+                    .appendPath("otp")
+                    .appendQueryParameter("authkey", "292349A2F1YiBtk5d6e2ab0")
+                    .appendQueryParameter("template_id", "5ef44d32d6fc050a177e90c7")
+                    .appendQueryParameter("extra_param", "{%22COMPANY_NAME%22:%22GIFOLA%20TECH%22}")
+                    .appendQueryParameter("mobile", mobileNumber)
+                    .appendQueryParameter("invisible", "1")
+                    .appendQueryParameter("otp", otp);
 
             String json = "";
 
@@ -266,12 +271,11 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
     void SendUserMobileNumber(String mobileNum) {
         bar.show();
         final UserData userData = new UserData();
-        userData.setApp_usr_id(100);
         userData.setIsactive(true);
         userData.setApp_usr_mobile(mobileNum);
         Gson gson = new Gson();
         String jsonDATA = gson.toJson(userData);
-        Call<ResponseBody> responseBodyCall = adminAPI.RegisterUserMobileNumber(jsonDATA);
+        Call<ResponseBody> responseBodyCall = adminAPI.RegisterUserMobileNumber(userData.getApp_usr_mobile());
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -296,6 +300,7 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
             }
         });
     }
+
 
     public void smsListener() {
         SmsRetrieverClient mClient = SmsRetriever.getClient(this);

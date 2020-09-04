@@ -25,7 +25,7 @@ public class MySMSBroadCastReceiver extends BroadcastReceiver {
         this.getOtpInterface = getOtpInterface;
     }
     @Override public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "onReceive: ");
+        Log.e(TAG, "onReceive: ");
         if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.getAction())) {
             Bundle extras = intent.getExtras();
             Status mStatus = (Status) extras.get(SmsRetriever.EXTRA_STATUS);

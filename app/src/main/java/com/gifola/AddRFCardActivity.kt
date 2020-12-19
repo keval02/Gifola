@@ -1,15 +1,27 @@
 package com.gifola
 
+import android.app.Dialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gifola.adapter.RFCardListAdapter
@@ -18,16 +30,22 @@ import com.gifola.apis.SeriveGenerator
 import com.gifola.constans.Global
 import com.gifola.constans.Global.displayToastMessage
 import com.gifola.constans.SharedPreferenceHelper
+import com.gifola.helper.AESEncryptionDecryptionAlgorithm
 import com.gifola.model.RFCardModel
 import com.gifola.model.RFCardModelItem
 import com.gifola.model.RFLocationModel
 import com.gifola.model.UserData
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_add_r_f_card.*
+import kotlinx.android.synthetic.main.layout_qr_dialog.*
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AddRFCardActivity : AppCompatActivity() {
@@ -42,6 +60,11 @@ class AddRFCardActivity : AppCompatActivity() {
     var rfCardDataModelItems: ArrayList<RFCardModelItem> = ArrayList()
     lateinit var rfCardAdapter: RFCardListAdapter
     var memberId: Int = 0
+    var jsonObject: JSONObject? = null
+    var generatedText = ""
+    var encryptedText = ""
+    private var qrgEncoder: QRGEncoder? = null
+    private var bitmap: Bitmap? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_r_f_card)
@@ -61,6 +84,9 @@ class AddRFCardActivity : AppCompatActivity() {
             var isLocationAvailable: Boolean = false
             var selectedLocationId: Int = 0
             var selectedLocationMemberId: Int = 0
+
+
+
             when {
                 rfCardNumber.isEmpty() -> {
                     displayToastMessage(getString(R.string.message_valid_card_no), applicationContext)
@@ -69,18 +95,30 @@ class AddRFCardActivity : AppCompatActivity() {
                     displayToastMessage(getString(R.string.message_valid_card_holder_name), applicationContext)
                 }
                 else -> {
+                    var totalCardOnSelectedLocation = 0
                     if (rfLocationList[0].size > 0) {
                         val selectedLocationPosition = spinner2.selectedItemPosition
                         selectedLocationId = rfLocationList[0][selectedLocationPosition].site_id
                         selectedLocationMemberId = rfLocationList[0][selectedLocationPosition].mem_id
                         isLocationAvailable = true
                     }
-                    addRFCard(rfCardNumber, rfCardHolderName, selectedLocationId, selectedLocationMemberId, isLocationAvailable)
+
+                    rfCardDataModelItems.forEachIndexed { index, rfLocationDataModel ->
+                        if (rfLocationDataModel.site_id == selectedLocationId) {
+                            totalCardOnSelectedLocation += 1
+                        }
+                    }
+
+                    if (totalCardOnSelectedLocation >= 4) {
+                        displayToastMessage(getString(R.string.message_rf_card_limit_exceed), applicationContext)
+                    } else {
+                        addRFCard(rfCardNumber, rfCardHolderName, selectedLocationId, selectedLocationMemberId, isLocationAvailable)
+                    }
                 }
             }
         }
 
-        spinner2?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinner2?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -91,10 +129,15 @@ class AddRFCardActivity : AppCompatActivity() {
 
         }
 
+        btnReadCard.setOnClickListener {
+            openQRCodeDialog()
+        }
+
 
         setupToolbar()
         getRFCardList(memberId)
         getRFLocationList()
+        generateQRCodeData()
     }
 
     private fun addRFCard(rfCardNumber: String, rfCardHolderName: String, selectedLocationId: Int, selectedLocationMemberId: Int, isLocationAvailable: Boolean) {
@@ -188,13 +231,13 @@ class AddRFCardActivity : AppCompatActivity() {
                             deletedCard(appUsrRfId, appRfStId)
                         }
 
-                        override fun copyRFCard(rfCardModelItem: RFCardModelItem){
+                        override fun copyRFCard(rfCardModelItem: RFCardModelItem) {
                             edit_rdcardno.setText(rfCardModelItem.cardNo)
                             edit_rdcardholdername.setText(rfCardModelItem.name)
                             val locationId = rfCardModelItem.site_id
                             var spinnerPosition = 0
                             rfLocationList[0].forEachIndexed { index, rfCardModelItems ->
-                                if(rfCardModelItems.site_id == locationId){
+                                if (rfCardModelItems.site_id == locationId) {
                                     spinnerPosition = index
                                 }
                             }
@@ -265,6 +308,69 @@ class AddRFCardActivity : AppCompatActivity() {
         supportActionBar!!.setHomeButtonEnabled(true)
         toolbar!!.setNavigationIcon(R.drawable.back_1)
         toolbar!!.setNavigationOnClickListener { onBackPressed() }
+    }
+
+    private fun generateQRCodeData() {
+        val name = Global.getUserMe(preferenceHelper!!)!!.app_usr_name
+        val mobile = Global.getUserMe(preferenceHelper!!)!!.app_usr_mobile
+        val timeStamp = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(Date())
+        try {
+            jsonObject = JSONObject()
+            jsonObject!!.put("name", name)
+            jsonObject!!.put("mobile_number", mobile)
+            jsonObject!!.put("time", timeStamp)
+            generatedText = "R: " + jsonObject.toString()
+        } catch (e: Exception) {
+            Log.e("exceptionJson", e.message)
+        }
+        try {
+            val key = "this is my key"
+            encryptedText = AESEncryptionDecryptionAlgorithm.getInstance(key).encrypt_string(generatedText)
+            Log.e("textEncrypt", "" + encryptedText)
+            Log.e("textDecrypy", "" + AESEncryptionDecryptionAlgorithm.getInstance(key).decrypt_string(encryptedText))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        if (!encryptedText.isEmpty()) {
+            generatedText = encryptedText
+        }
+    }
+
+    private fun openQRCodeDialog() {
+        val dialog: Dialog = Dialog(ContextThemeWrapper(this, R.style.AppTheme))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.layout_qr_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+
+        var isGeneratedOnce = false
+        val manager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = manager.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        val width = point.x
+        val height = point.y
+        var smallerDimension = if (width < height) width else height
+        smallerDimension = smallerDimension * 3 / 4
+        qrgEncoder = QRGEncoder(
+                generatedText, null,
+                QRGContents.Type.TEXT,
+                smallerDimension)
+        qrgEncoder!!.colorBlack = Color.BLACK
+        qrgEncoder!!.colorWhite = Color.WHITE
+        try {
+            bitmap = qrgEncoder!!.bitmap
+            dialog.qrImage!!.setImageBitmap(bitmap)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        dialog.ivClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }
 

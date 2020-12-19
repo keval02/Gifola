@@ -1,16 +1,28 @@
 package com.gifola
 
+import android.app.Dialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.TextView
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gifola.adapter.UHFCardListAdapter
@@ -18,17 +30,22 @@ import com.gifola.apis.AdminAPI
 import com.gifola.apis.SeriveGenerator
 import com.gifola.constans.Global
 import com.gifola.constans.SharedPreferenceHelper
-import com.gifola.model.*
+import com.gifola.helper.AESEncryptionDecryptionAlgorithm
+import com.gifola.model.RFLocationModel
+import com.gifola.model.UHFCardModel
+import com.gifola.model.UHFCardModelItem
+import com.gifola.model.UserData
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_add_u_h_f_card.*
-import kotlinx.android.synthetic.main.activity_add_u_h_f_card.btn_add
-import kotlinx.android.synthetic.main.activity_add_u_h_f_card.rv_location
-import kotlinx.android.synthetic.main.activity_add_u_h_f_card.spinner2
-import kotlinx.android.synthetic.main.activity_add_u_h_f_card.txt_no_data_found
+import kotlinx.android.synthetic.main.layout_qr_dialog.*
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AddUHFCardActivity : AppCompatActivity() {
     var member: ArrayList<String> = ArrayList()
@@ -41,6 +58,11 @@ class AddUHFCardActivity : AppCompatActivity() {
     var userData: UserData? = null
     var memberId : Int = 0
     var rfCardDataModelItems: ArrayList<UHFCardModelItem> = ArrayList()
+    var jsonObject: JSONObject? = null
+    var generatedText = ""
+    var encryptedText = ""
+    private var qrgEncoder: QRGEncoder? = null
+    private var bitmap: Bitmap? = null
     lateinit var rfCardAdapter : UHFCardListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +75,10 @@ class AddUHFCardActivity : AppCompatActivity() {
             memberId = userData?.mem_id ?: 0
         } catch (e: Exception) {
             Log.e("exception", e.message)
+        }
+
+        btnReadCard.setOnClickListener {
+            openQRCodeDialog()
         }
 
         btn_add.setOnClickListener {
@@ -74,13 +100,25 @@ class AddUHFCardActivity : AppCompatActivity() {
                     Global.displayToastMessage(getString(R.string.message_valid_vehicle_no), applicationContext)
                 }
                 else -> {
+                    var totalCardOnSelectedLocation = 0
                     if(rfLocationList[0].size > 0) {
                         val selectedLocationPosition = spinner2.selectedItemPosition
                         selectedLocationId = rfLocationList[0][selectedLocationPosition].site_id
                         selectedLocationMemberId = rfLocationList[0][selectedLocationPosition].mem_id
                         isLocationAvailable = true
                     }
-                    addUHFCard(uhfTagNumber, uhfVehicleName, uhfVehicleNumber , selectedLocationId, selectedLocationMemberId, isLocationAvailable)
+
+                    rfCardDataModelItems.forEachIndexed { index, uhfCardModelItem ->
+                        if (uhfCardModelItem.site_id == selectedLocationId) {
+                            totalCardOnSelectedLocation += 1
+                        }
+                    }
+
+                    if(totalCardOnSelectedLocation >= 4){
+                        Global.displayToastMessage(getString(R.string.message_uhf_limit_exceed), applicationContext)
+                    }else {
+                        addUHFCard(uhfTagNumber, uhfVehicleName, uhfVehicleNumber , selectedLocationId, selectedLocationMemberId, isLocationAvailable)
+                    }
                 }
             }
 
@@ -100,6 +138,44 @@ class AddUHFCardActivity : AppCompatActivity() {
         setupToolbar()
         getUHFCardList(memberId)
         getRFLocationList()
+        generateQRCodeData()
+    }
+
+    private fun openQRCodeDialog() {
+        val dialog : Dialog = Dialog(ContextThemeWrapper(this, R.style.AppTheme))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.layout_qr_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+
+        var isGeneratedOnce = false
+        val manager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = manager.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        val width = point.x
+        val height = point.y
+        var smallerDimension = if (width < height) width else height
+        smallerDimension = smallerDimension * 3 / 4
+        qrgEncoder = QRGEncoder(
+                generatedText, null,
+                QRGContents.Type.TEXT,
+                smallerDimension)
+        qrgEncoder!!.colorBlack = Color.BLACK
+        qrgEncoder!!.colorWhite = Color.WHITE
+        try {
+            bitmap = qrgEncoder!!.bitmap
+            dialog.qrImage!!.setImageBitmap(bitmap)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        dialog.ivClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
 
@@ -278,5 +354,31 @@ class AddUHFCardActivity : AppCompatActivity() {
             dialog.cancel()
         })
         alert.show()
+    }
+
+    private fun generateQRCodeData() {
+        val name = Global.getUserMe(preferenceHelper!!)!!.app_usr_name
+        val mobile = Global.getUserMe(preferenceHelper!!)!!.app_usr_mobile
+        val timeStamp = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(Date())
+        try {
+            jsonObject = JSONObject()
+            jsonObject!!.put("name", name)
+            jsonObject!!.put("mobile_number", mobile)
+            jsonObject!!.put("time", timeStamp)
+            generatedText = "U: " + jsonObject.toString()
+        } catch (e: Exception) {
+            Log.e("exceptionJson", e.message)
+        }
+        try {
+            val key = "this is my key"
+            encryptedText = AESEncryptionDecryptionAlgorithm.getInstance(key).encrypt_string(generatedText)
+            Log.e("textEncrypt", "" + encryptedText)
+            Log.e("textDecrypy", "" + AESEncryptionDecryptionAlgorithm.getInstance(key).decrypt_string(encryptedText))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        if (!encryptedText.isEmpty()) {
+            generatedText = encryptedText
+        }
     }
 }

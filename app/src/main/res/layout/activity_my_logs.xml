@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:toggle="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -95,9 +94,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -108,17 +109,16 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="8dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_height="match_parent">
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:orientation="horizontal"
-                        android:padding="0dp"
-                        >
+                        android:padding="0dp">
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -127,8 +127,7 @@
 
                             <LinearLayout
                                 android:layout_width="80dp"
-                                android:layout_height="match_parent"
-                                >
+                                android:layout_height="match_parent">
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
@@ -154,31 +153,30 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="90dp"
-                                    android:layout_marginLeft="25dp"
                                     android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="25dp"
                                     android:background="@drawable/borderhome"
+                                    android:gravity="center_vertical"
                                     android:orientation="vertical"
                                     android:padding="0.5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@color/white"
                                         android:layout_gravity="center_vertical"
+                                        android:background="@color/white"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                             android:id="@+id/profile_image"
                                             android:layout_width="48dp"
                                             android:layout_height="48dp"
-                                            android:src="@drawable/user1"
                                             android:layout_gravity="center"
                                             android:layout_margin="5dp"
-                                            app:civ_border_width="0.5dp"
-                                            app:civ_border_color="@color/grey"/>
+                                            android:src="@drawable/user1"
+                                            app:civ_border_color="@color/grey"
+                                            app:civ_border_width="0.5dp" />
 
 
                                         <LinearLayout
@@ -211,12 +209,11 @@
                                                 android:textSize="12sp" />
 
                                             <ImageView
+                                                android:id="@+id/infoclick"
                                                 android:layout_width="20dp"
                                                 android:layout_height="20dp"
                                                 android:src="@drawable/info"
-                                                android:tint="@color/blue"
-                                                android:id="@+id/infoclick"
-                                                ></ImageView>
+                                                android:tint="@color/blue"></ImageView>
 
 
                                         </LinearLayout>
@@ -295,19 +292,18 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_gravity="left|center_vertical"
+                                            android:layout_margin="2dp"
                                             android:layout_weight="1.8"
                                             android:gravity="left|center_vertical"
-                                            android:layout_margin="2dp"
                                             android:orientation="vertical">
 
                                             <androidx.cardview.widget.CardView
                                                 android:id="@+id/card_accept"
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
-                                                app:cardCornerRadius="4dp"
                                                 android:layout_marginBottom="5dp"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
                                                     android:layout_width="wrap_content"
@@ -328,25 +324,23 @@
                                                 android:id="@+id/card_reject"
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
-                                                app:cardCornerRadius="4dp"
                                                 android:layout_marginTop="5dp"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
                                                     android:layout_marginLeft="5dp"
                                                     android:layout_marginTop="3dp"
                                                     android:layout_marginRight="5dp"
                                                     android:layout_marginBottom="3dp"
                                                     android:gravity="center"
-                                                    android:layout_gravity="center"
                                                     android:text="Reject"
                                                     android:textColor="@color/colorPrimary"
                                                     android:textSize="10sp" />
                                             </androidx.cardview.widget.CardView>
-
 
 
                                         </LinearLayout>
@@ -354,17 +348,15 @@
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/menuimg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|right"
                                     android:layout_weight="1"
-                                    android:id="@+id/menuimg"
-                                    android:gravity="bottom|right"
-                                    >
+                                    android:gravity="bottom|right">
 
                                     <ImageView
                                         android:layout_width="18dp"
@@ -377,7 +369,6 @@
                             </FrameLayout>
 
 
-
                         </FrameLayout>
 
 
@@ -385,13 +376,13 @@
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
+                    android:id="@+id/sublayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:orientation="horizontal"
                     android:padding="0dp"
                     android:visibility="gone"
-                    android:id="@+id/sublayout"
 
                     >
 
@@ -399,8 +390,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="3dp"
-                        >
+                        android:padding="3dp">
                         <!--                            android:background="@drawable/borderhome"-->
 
                         <com.gifola.customfonts.MyTextViewMedium
@@ -419,6 +409,7 @@
                             android:layout_gravity="left"
                             android:layout_marginLeft="12dp"
                             android:gravity="left"
+                            android:id="@+id/purposeTV"
                             android:text="This is the purpose for the current item."
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"></com.gifola.customfonts.MyTextView>
@@ -426,22 +417,20 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="8dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_height="match_parent">
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:orientation="horizontal"
-                        android:padding="0dp"
-                        >
+                        android:padding="0dp">
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -450,8 +439,7 @@
 
                             <LinearLayout
                                 android:layout_width="80dp"
-                                android:layout_height="match_parent"
-                                >
+                                android:layout_height="match_parent">
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
@@ -476,31 +464,30 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="90dp"
-                                    android:layout_marginLeft="25dp"
                                     android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="25dp"
                                     android:background="@drawable/borderhome"
+                                    android:gravity="center_vertical"
                                     android:orientation="vertical"
                                     android:padding="0.5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@color/white"
                                         android:layout_gravity="center_vertical"
+                                        android:background="@color/white"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                             android:id="@+id/profile_image"
                                             android:layout_width="48dp"
                                             android:layout_height="48dp"
-                                            android:src="@drawable/user1"
                                             android:layout_gravity="center"
                                             android:layout_margin="5dp"
-                                            app:civ_border_width="0.5dp"
-                                            app:civ_border_color="@color/grey"/>
+                                            android:src="@drawable/user1"
+                                            app:civ_border_color="@color/grey"
+                                            app:civ_border_width="0.5dp" />
 
 
                                         <LinearLayout
@@ -530,12 +517,12 @@
                                                 android:text="9876543210"
                                                 android:textColor="@color/darkgrey"
                                                 android:textSize="12sp" />
+
                                             <ImageView
                                                 android:layout_width="20dp"
                                                 android:layout_height="20dp"
                                                 android:src="@drawable/info"
-                                                android:tint="@color/blue"
-                                                ></ImageView>
+                                                android:tint="@color/blue"></ImageView>
 
                                         </LinearLayout>
 
@@ -624,50 +611,46 @@
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="left"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginTop="3dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginBottom="3dp"
                                                 android:gravity="left"
-                                                android:layout_gravity="left"
                                                 android:text="Status"
                                                 android:textColor="@color/red"
                                                 android:textSize="10sp" />
                                             <!--                                                </androidx.cardview.widget.CardView>-->
 
 
-
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="left"
                                                 android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="3dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
                                                 android:gravity="left"
-                                                android:layout_gravity="left"
                                                 android:text="Accepted"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="10sp" />
 
 
-
                                         </LinearLayout>
 
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/menuimg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|right"
                                     android:layout_weight="1"
-                                    android:id="@+id/menuimg"
-                                    android:gravity="bottom|right"
-                                    >
+                                    android:gravity="bottom|right">
 
                                     <ImageView
                                         android:layout_width="18dp"
@@ -680,7 +663,6 @@
                             </FrameLayout>
 
 
-
                         </FrameLayout>
 
 
@@ -689,17 +671,16 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="8dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_height="match_parent">
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:orientation="horizontal"
-                        android:padding="0dp"
-                        >
+                        android:padding="0dp">
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -708,8 +689,7 @@
 
                             <LinearLayout
                                 android:layout_width="80dp"
-                                android:layout_height="match_parent"
-                                >
+                                android:layout_height="match_parent">
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
@@ -734,31 +714,30 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="90dp"
-                                    android:layout_marginLeft="25dp"
                                     android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="25dp"
                                     android:background="@drawable/borderhome"
+                                    android:gravity="center_vertical"
                                     android:orientation="vertical"
                                     android:padding="0.5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@color/white"
                                         android:layout_gravity="center_vertical"
+                                        android:background="@color/white"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                             android:id="@+id/profile_image"
                                             android:layout_width="48dp"
                                             android:layout_height="48dp"
-                                            android:src="@drawable/user1"
                                             android:layout_gravity="center"
                                             android:layout_margin="5dp"
-                                            app:civ_border_width="0.5dp"
-                                            app:civ_border_color="@color/grey"/>
+                                            android:src="@drawable/user1"
+                                            app:civ_border_color="@color/grey"
+                                            app:civ_border_width="0.5dp" />
 
 
                                         <LinearLayout
@@ -788,12 +767,12 @@
                                                 android:text="9876543210"
                                                 android:textColor="@color/darkgrey"
                                                 android:textSize="12sp" />
+
                                             <ImageView
                                                 android:layout_width="20dp"
                                                 android:layout_height="20dp"
                                                 android:src="@drawable/info"
-                                                android:tint="@color/blue"
-                                                ></ImageView>
+                                                android:tint="@color/blue"></ImageView>
 
                                         </LinearLayout>
 
@@ -882,50 +861,46 @@
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="left"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginTop="3dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginBottom="3dp"
                                                 android:gravity="left"
-                                                android:layout_gravity="left"
                                                 android:text="Status"
                                                 android:textColor="@color/red"
                                                 android:textSize="10sp" />
                                             <!--                                                </androidx.cardview.widget.CardView>-->
 
 
-
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="left"
                                                 android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="3dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
                                                 android:gravity="left"
-                                                android:layout_gravity="left"
                                                 android:text="Rejected"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="10sp" />
 
 
-
                                         </LinearLayout>
 
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/menuimg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|right"
                                     android:layout_weight="1"
-                                    android:id="@+id/menuimg"
-                                    android:gravity="bottom|right"
-                                    >
+                                    android:gravity="bottom|right">
 
                                     <ImageView
                                         android:layout_width="18dp"
@@ -938,7 +913,6 @@
                             </FrameLayout>
 
 
-
                         </FrameLayout>
 
 
@@ -947,17 +921,16 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="8dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_height="match_parent">
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:orientation="horizontal"
-                        android:padding="0dp"
-                        >
+                        android:padding="0dp">
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -966,8 +939,7 @@
 
                             <LinearLayout
                                 android:layout_width="80dp"
-                                android:layout_height="match_parent"
-                                >
+                                android:layout_height="match_parent">
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
@@ -992,31 +964,30 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="90dp"
-                                    android:layout_marginLeft="25dp"
                                     android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="25dp"
                                     android:background="@drawable/borderhome"
+                                    android:gravity="center_vertical"
                                     android:orientation="vertical"
                                     android:padding="0.5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@color/white"
                                         android:layout_gravity="center_vertical"
+                                        android:background="@color/white"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                             android:id="@+id/profile_image"
                                             android:layout_width="48dp"
                                             android:layout_height="48dp"
-                                            android:src="@drawable/user1"
                                             android:layout_gravity="center"
                                             android:layout_margin="5dp"
-                                            app:civ_border_width="0.5dp"
-                                            app:civ_border_color="@color/grey"/>
+                                            android:src="@drawable/user1"
+                                            app:civ_border_color="@color/grey"
+                                            app:civ_border_width="0.5dp" />
 
 
                                         <LinearLayout
@@ -1051,8 +1022,7 @@
                                                 android:layout_width="20dp"
                                                 android:layout_height="20dp"
                                                 android:src="@drawable/info"
-                                                android:tint="@color/blue"
-                                                ></ImageView>
+                                                android:tint="@color/blue"></ImageView>
                                         </LinearLayout>
 
                                         <androidx.cardview.widget.CardView
@@ -1126,18 +1096,17 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_gravity="left|center_vertical"
+                                            android:layout_margin="2dp"
                                             android:layout_weight="1.8"
                                             android:gravity="left|center_vertical"
-                                            android:layout_margin="2dp"
                                             android:orientation="vertical">
 
                                             <androidx.cardview.widget.CardView
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
-                                                app:cardCornerRadius="4dp"
                                                 android:layout_marginBottom="5dp"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
                                                     android:layout_width="wrap_content"
@@ -1154,29 +1123,26 @@
                                             </androidx.cardview.widget.CardView>
 
 
-
                                             <androidx.cardview.widget.CardView
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
-                                                app:cardCornerRadius="4dp"
                                                 android:layout_marginTop="5dp"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
                                                     android:layout_marginLeft="5dp"
                                                     android:layout_marginTop="3dp"
                                                     android:layout_marginRight="5dp"
                                                     android:layout_marginBottom="3dp"
                                                     android:gravity="center"
-                                                    android:layout_gravity="center"
                                                     android:text="Reject"
                                                     android:textColor="@color/colorPrimary"
                                                     android:textSize="10sp" />
                                             </androidx.cardview.widget.CardView>
-
 
 
                                         </LinearLayout>
@@ -1184,17 +1150,15 @@
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/menuimg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|right"
                                     android:layout_weight="1"
-                                    android:id="@+id/menuimg"
-                                    android:gravity="bottom|right"
-                                    >
+                                    android:gravity="bottom|right">
 
                                     <ImageView
                                         android:layout_width="18dp"
@@ -1207,7 +1171,6 @@
                             </FrameLayout>
 
 
-
                         </FrameLayout>
 
 
@@ -1216,17 +1179,16 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="8dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_height="match_parent">
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:orientation="horizontal"
-                        android:padding="0dp"
-                        >
+                        android:padding="0dp">
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -1235,8 +1197,7 @@
 
                             <LinearLayout
                                 android:layout_width="80dp"
-                                android:layout_height="match_parent"
-                                >
+                                android:layout_height="match_parent">
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
@@ -1261,31 +1222,30 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="90dp"
-                                    android:layout_marginLeft="25dp"
                                     android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="25dp"
                                     android:background="@drawable/borderhome"
+                                    android:gravity="center_vertical"
                                     android:orientation="vertical"
                                     android:padding="0.5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@color/white"
                                         android:layout_gravity="center_vertical"
+                                        android:background="@color/white"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                             android:id="@+id/profile_image"
                                             android:layout_width="48dp"
                                             android:layout_height="48dp"
-                                            android:src="@drawable/user1"
                                             android:layout_gravity="center"
                                             android:layout_margin="5dp"
-                                            app:civ_border_width="0.5dp"
-                                            app:civ_border_color="@color/grey"/>
+                                            android:src="@drawable/user1"
+                                            app:civ_border_color="@color/grey"
+                                            app:civ_border_width="0.5dp" />
 
 
                                         <LinearLayout
@@ -1320,8 +1280,7 @@
                                                 android:layout_width="20dp"
                                                 android:layout_height="20dp"
                                                 android:src="@drawable/info"
-                                                android:tint="@color/blue"
-                                                ></ImageView>
+                                                android:tint="@color/blue"></ImageView>
                                         </LinearLayout>
 
                                         <androidx.cardview.widget.CardView
@@ -1409,32 +1368,30 @@
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="left"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginTop="3dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginBottom="3dp"
                                                 android:gravity="left"
-                                                android:layout_gravity="left"
                                                 android:text="Status"
                                                 android:textColor="@color/red"
                                                 android:textSize="10sp" />
                                             <!--                                                </androidx.cardview.widget.CardView>-->
 
 
-
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="left"
                                                 android:layout_marginLeft="5dp"
+                                                android:layout_marginTop="3dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
                                                 android:gravity="left"
-                                                android:layout_gravity="left"
                                                 android:text="Pending"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="10sp" />
-
 
 
                                         </LinearLayout>
@@ -1442,17 +1399,15 @@
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/menuimg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|right"
                                     android:layout_weight="1"
-                                    android:id="@+id/menuimg"
-                                    android:gravity="bottom|right"
-                                    >
+                                    android:gravity="bottom|right">
 
                                     <ImageView
                                         android:layout_width="18dp"
@@ -1465,7 +1420,6 @@
                             </FrameLayout>
 
 
-
                         </FrameLayout>
 
 
@@ -1474,17 +1428,16 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    app:cardCornerRadius="8dp"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
-                    android:layout_height="match_parent">
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:orientation="horizontal"
-                        android:padding="0dp"
-                        >
+                        android:padding="0dp">
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -1493,8 +1446,7 @@
 
                             <LinearLayout
                                 android:layout_width="80dp"
-                                android:layout_height="match_parent"
-                                >
+                                android:layout_height="match_parent">
                                 <!--                                    android:background="@drawable/borderhome"-->
 
                                 <com.gifola.customfonts.MyTextView
@@ -1519,31 +1471,30 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="90dp"
-                                    android:layout_marginLeft="25dp"
                                     android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="25dp"
                                     android:background="@drawable/borderhome"
+                                    android:gravity="center_vertical"
                                     android:orientation="vertical"
                                     android:padding="0.5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:background="@color/white"
                                         android:layout_gravity="center_vertical"
+                                        android:background="@color/white"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
-                                        <de.hdodenhof.circleimageview.CircleImageView
-                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                             android:id="@+id/profile_image"
                                             android:layout_width="48dp"
                                             android:layout_height="48dp"
-                                            android:src="@drawable/user1"
                                             android:layout_gravity="center"
                                             android:layout_margin="5dp"
-                                            app:civ_border_width="0.5dp"
-                                            app:civ_border_color="@color/grey"/>
+                                            android:src="@drawable/user1"
+                                            app:civ_border_color="@color/grey"
+                                            app:civ_border_width="0.5dp" />
 
 
                                         <LinearLayout
@@ -1578,8 +1529,7 @@
                                                 android:layout_width="20dp"
                                                 android:layout_height="20dp"
                                                 android:src="@drawable/info"
-                                                android:tint="@color/blue"
-                                                ></ImageView>
+                                                android:tint="@color/blue"></ImageView>
                                         </LinearLayout>
 
                                         <androidx.cardview.widget.CardView
@@ -1653,18 +1603,17 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_gravity="left|center_vertical"
+                                            android:layout_margin="2dp"
                                             android:layout_weight="1.8"
                                             android:gravity="left|center_vertical"
-                                            android:layout_margin="2dp"
                                             android:orientation="vertical">
 
                                             <androidx.cardview.widget.CardView
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
-                                                app:cardCornerRadius="4dp"
                                                 android:layout_marginBottom="5dp"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
                                                     android:layout_width="wrap_content"
@@ -1681,29 +1630,26 @@
                                             </androidx.cardview.widget.CardView>
 
 
-
                                             <androidx.cardview.widget.CardView
                                                 android:layout_width="48dp"
                                                 android:layout_height="wrap_content"
-                                                app:cardCornerRadius="4dp"
                                                 android:layout_marginTop="5dp"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
                                                     android:layout_marginLeft="5dp"
                                                     android:layout_marginTop="3dp"
                                                     android:layout_marginRight="5dp"
                                                     android:layout_marginBottom="3dp"
                                                     android:gravity="center"
-                                                    android:layout_gravity="center"
                                                     android:text="Reject"
                                                     android:textColor="@color/colorPrimary"
                                                     android:textSize="10sp" />
                                             </androidx.cardview.widget.CardView>
-
 
 
                                         </LinearLayout>
@@ -1711,17 +1657,15 @@
                                     </LinearLayout>
 
 
-
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/menuimg"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|right"
                                     android:layout_weight="1"
-                                    android:id="@+id/menuimg"
-                                    android:gravity="bottom|right"
-                                    >
+                                    android:gravity="bottom|right">
 
                                     <ImageView
                                         android:layout_width="18dp"
@@ -1732,7 +1676,6 @@
                                         android:src="@drawable/menu" />
                                 </LinearLayout>
                             </FrameLayout>
-
 
 
                         </FrameLayout>
@@ -1747,38 +1690,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
         android:gravity="right"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/backcard"
                 android:layout_width="70dp"
                 android:layout_height="40dp"
-                app:cardCornerRadius="4dp"
-                android:id="@+id/backcard"
                 android:layout_margin="4dp"
-                app:cardBackgroundColor="@color/colorPrimary"
                 android:elevation="4dp"
-                >
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="4dp">
 
                 <com.gifola.customfonts.MyTextViewMedium
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
                     android:gravity="center|center_vertical"
-                    android:text="Back"
                     android:paddingLeft="5dp"
+                    android:text="Back"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
@@ -1789,28 +1731,27 @@
             android:id="@+id/btn_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/filtercard"
                 android:layout_width="70dp"
                 android:layout_height="40dp"
-                app:cardCornerRadius="4dp"
                 android:layout_margin="4dp"
-                android:id="@+id/filtercard"
                 android:elevation="4dp"
                 app:cardBackgroundColor="@color/colorPrimary"
-                >
+                app:cardCornerRadius="4dp">
 
                 <com.gifola.customfonts.MyTextViewMedium
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
                     android:gravity="center|center_vertical"
-                    android:text="Filter"
                     android:paddingLeft="5dp"
+                    android:text="Filter"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 

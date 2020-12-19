@@ -19,9 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:elevation="10dp"
             app:cardCornerRadius="10dp">
 
@@ -42,6 +42,7 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -55,16 +56,15 @@
                                 android:orientation="horizontal"
                                 android:padding="10dp">
 
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                     android:id="@+id/profile_image"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/user_placeholder"
                                     android:layout_gravity="center"
                                     android:layout_margin="5dp"
-                                    app:civ_border_width="0.5dp"
-                                    app:civ_border_color="@color/grey"/>
+                                    android:src="@drawable/user_placeholder"
+                                    app:civ_border_color="@color/grey"
+                                    app:civ_border_width="0.5dp" />
 
                             </LinearLayout>
 
@@ -102,13 +102,13 @@
 
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top|right"
                             android:layout_weight="1"
-                            android:gravity="top|right"
-                            >
+                            android:gravity="top|right">
 
                             <ImageView
                                 android:id="@+id/img_fav"
@@ -117,9 +117,8 @@
                                 android:layout_gravity="top|right"
                                 android:layout_margin="5dp"
                                 android:padding="3dp"
-                                android:tint="@color/blue"
-
-                                android:src="@drawable/star" />
+                                android:src="@drawable/star"
+                                android:tint="@color/grey" />
                         </LinearLayout>
                     </FrameLayout>
 
@@ -127,14 +126,11 @@
                 </LinearLayout>
 
 
-
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
 
                     <ScrollView
                         android:layout_width="match_parent"
@@ -147,18 +143,19 @@
                             android:orientation="vertical">
 
                             <LinearLayout
-                                android:padding="6dp"
                                 android:layout_width="match_parent"
-                                android:orientation="vertical"
+                                android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
-                                android:layout_height="wrap_content">
+                                android:orientation="vertical"
+                                android:padding="6dp">
+
                                 <com.gifola.customfonts.MyTextViewBold
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1.7"
                                     android:layout_marginBottom="5dp"
-                                    android:textColor="@color/colorPrimary"
+                                    android:layout_weight="1.7"
                                     android:text="Select Host Location Where You Are Visiting"
+                                    android:textColor="@color/colorPrimary"
                                     android:textSize="14sp"></com.gifola.customfonts.MyTextViewBold>
 
 
@@ -195,62 +192,58 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1.4"
-                                    android:orientation="vertical"
-                                    >
+                                    android:orientation="vertical">
 
                                     <androidx.cardview.widget.CardView
+                                        android:id="@+id/card1"
                                         android:layout_width="match_parent"
                                         android:layout_height="30dp"
-                                        app:cardCornerRadius="4dp"
-                                        android:id="@+id/card1"
-                                        app:cardBackgroundColor="@color/white"
                                         android:layout_margin="4dp"
                                         android:elevation="4dp"
-                                        >
+                                        app:cardBackgroundColor="@color/white"
+                                        app:cardCornerRadius="4dp">
 
                                         <com.gifola.customfonts.MyTextViewBold
+                                            android:id="@+id/text1"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="3dp"
+                                            android:layout_marginTop="3dp"
                                             android:layout_marginRight="3dp"
                                             android:layout_marginBottom="3dp"
-                                            android:layout_marginTop="3dp"
                                             android:gravity="left|center_vertical"
-                                            android:text="Request For Now"
-                                            android:id="@+id/text1"
                                             android:paddingLeft="5dp"
+                                            android:text="Request For Now"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="16sp" />
 
                                     </androidx.cardview.widget.CardView>
 
                                     <androidx.cardview.widget.CardView
+                                        android:id="@+id/card2"
                                         android:layout_width="match_parent"
                                         android:layout_height="30dp"
-                                        app:cardCornerRadius="4dp"
                                         android:layout_margin="4dp"
-                                        android:id="@+id/card2"
                                         android:elevation="4dp"
-                                        >
+                                        app:cardCornerRadius="4dp">
 
                                         <com.gifola.customfonts.MyTextViewBold
+                                            android:id="@+id/text2"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="3dp"
+                                            android:layout_marginTop="3dp"
                                             android:layout_marginRight="3dp"
                                             android:layout_marginBottom="3dp"
-                                            android:layout_marginTop="3dp"
                                             android:gravity="left|center_vertical"
-                                            android:text="Schedule Checkin"
                                             android:paddingLeft="5dp"
-                                            android:id="@+id/text2"
+                                            android:text="Schedule Checkin"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="16sp" />
 
@@ -261,29 +254,28 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:orientation="vertical"
-                                        android:visibility="gone"
-                                        >
+                                        android:visibility="gone">
+
                                         <androidx.cardview.widget.CardView
                                             android:layout_width="match_parent"
                                             android:layout_height="30dp"
-                                            app:cardCornerRadius="4dp"
-                                            app:cardBackgroundColor="@color/white"
                                             android:layout_margin="4dp"
                                             android:elevation="4dp"
-                                            >
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="4dp">
 
                                             <com.gifola.customfonts.MyTextViewMedium
+                                                android:id="@+id/date1"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_marginLeft="3dp"
+                                                android:layout_marginTop="3dp"
                                                 android:layout_marginRight="3dp"
                                                 android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
                                                 android:focusable="false"
-                                                android:id="@+id/date1"
                                                 android:gravity="left|center_vertical"
-                                                android:text="Jan 4, 2020"
                                                 android:paddingLeft="5dp"
+                                                android:text="Jan 4, 2020"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="14sp" />
 
@@ -292,30 +284,29 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:orientation="horizontal"
-                                            >
+                                            android:orientation="horizontal">
+
                                             <androidx.cardview.widget.CardView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="30dp"
-                                                android:layout_weight="1"
-                                                app:cardCornerRadius="4dp"
-                                                app:cardBackgroundColor="@color/white"
                                                 android:layout_margin="4dp"
+                                                android:layout_weight="1"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardBackgroundColor="@color/white"
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
+                                                    android:id="@+id/time1"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="match_parent"
                                                     android:layout_marginLeft="3dp"
+                                                    android:layout_marginTop="3dp"
                                                     android:layout_marginRight="3dp"
                                                     android:layout_marginBottom="3dp"
-                                                    android:layout_marginTop="3dp"
-                                                    android:id="@+id/time1"
                                                     android:focusable="false"
                                                     android:gravity="left|center_vertical"
-                                                    android:text="12:00:00 PM"
                                                     android:paddingLeft="5dp"
+                                                    android:text="12:00:00 PM"
                                                     android:textColor="@color/colorPrimary"
                                                     android:textSize="14sp" />
 
@@ -325,33 +316,32 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="match_parent"
                                                 android:gravity="left|center_vertical"
-                                                android:text="To"
                                                 android:paddingLeft="5dp"
+                                                android:text="To"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="12sp" />
 
                                             <androidx.cardview.widget.CardView
                                                 android:layout_width="match_parent"
                                                 android:layout_height="30dp"
-                                                android:layout_weight="1"
-                                                app:cardCornerRadius="4dp"
-                                                app:cardBackgroundColor="@color/white"
                                                 android:layout_margin="4dp"
+                                                android:layout_weight="1"
                                                 android:elevation="4dp"
-                                                >
+                                                app:cardBackgroundColor="@color/white"
+                                                app:cardCornerRadius="4dp">
 
                                                 <com.gifola.customfonts.MyTextViewMedium
+                                                    android:id="@+id/time2"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="match_parent"
                                                     android:layout_marginLeft="3dp"
+                                                    android:layout_marginTop="3dp"
                                                     android:layout_marginRight="3dp"
                                                     android:layout_marginBottom="3dp"
-                                                    android:layout_marginTop="3dp"
                                                     android:focusable="false"
                                                     android:gravity="left|center_vertical"
-                                                    android:text="12:30:00 PM"
-                                                    android:id="@+id/time2"
                                                     android:paddingLeft="5dp"
+                                                    android:text="12:30:00 PM"
                                                     android:textColor="@color/colorPrimary"
                                                     android:textSize="14sp" />
 
@@ -359,25 +349,24 @@
                                         </LinearLayout>
 
                                         <androidx.cardview.widget.CardView
+                                            android:id="@+id/repeatcard"
                                             android:layout_width="match_parent"
                                             android:layout_height="30dp"
-                                            app:cardCornerRadius="4dp"
-                                            app:cardBackgroundColor="@color/white"
                                             android:layout_margin="4dp"
-                                            android:id="@+id/repeatcard"
                                             android:elevation="4dp"
-                                            >
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="4dp">
 
                                             <com.gifola.customfonts.MyTextViewMedium
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_marginLeft="3dp"
+                                                android:layout_marginTop="3dp"
                                                 android:layout_marginRight="3dp"
                                                 android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
                                                 android:gravity="left|center_vertical"
-                                                android:text="Repeat"
                                                 android:paddingLeft="5dp"
+                                                android:text="Repeat"
                                                 android:textColor="@color/colorPrimary"
                                                 android:textSize="14sp" />
 
@@ -386,158 +375,83 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_margin="0dp"
                                             android:layout_gravity="center"
-                                            android:gravity="center"
-                                            >
+                                            android:layout_margin="0dp"
+                                            android:gravity="center">
 
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle1"
+                                            <androidx.recyclerview.widget.RecyclerView
+                                                android:id="@+id/rvDays"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="S"
-                                                android:background="@drawable/rounded_solid"
-                                                android:layout_marginLeft="10dp"
-                                                android:textColor="#fff"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
+                                                android:layout_height="wrap_content" />
 
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle2"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="M"
-                                                android:background="@drawable/rounded_solid"
-                                                android:layout_marginLeft="10dp"
-
-                                                android:textColor="#fff"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle3"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="T"
-                                                android:background="@drawable/rounded_border"
-                                                android:layout_marginLeft="10dp"
-
-                                                android:textColor="@color/colorPrimary"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle4"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="W"
-                                                android:background="@drawable/rounded_border"
-                                                android:layout_marginLeft="10dp"
-
-                                                android:textColor="@color/colorPrimary"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle5"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="T"
-                                                android:background="@drawable/rounded_border"
-                                                android:layout_marginLeft="10dp"
-
-                                                android:textColor="@color/colorPrimary"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle6"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="F"
-                                                android:background="@drawable/rounded_solid"
-                                                android:layout_marginLeft="10dp"
-
-                                                android:textColor="#fff"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
-                                            <com.gifola.customfonts.MyTextViewMedium
-                                                android:id="@+id/circle7"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="42dp"
-                                                android:layout_gravity="top|center"
-                                                android:layout_weight="1"
-                                                android:gravity="center"
-                                                android:text="S"
-                                                android:background="@drawable/rounded_solid"
-                                                android:layout_marginLeft="10dp"
-                                                android:textColor="#fff"
-                                                android:textSize="14sp"
-                                                android:textStyle="bold" />
                                         </LinearLayout>
 
                                         <androidx.cardview.widget.CardView
                                             android:layout_width="match_parent"
                                             android:layout_height="30dp"
-                                            app:cardCornerRadius="4dp"
-                                            app:cardBackgroundColor="@color/white"
                                             android:layout_margin="4dp"
                                             android:elevation="4dp"
-                                            >
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="4dp">
 
-                                            <com.gifola.customfonts.MyTextViewMedium
+                                            <LinearLayout
+                                                android:id="@+id/validDateLL"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
-                                                android:layout_marginLeft="3dp"
-                                                android:layout_marginRight="3dp"
-                                                android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
-                                                android:id="@+id/date2"
-                                                android:focusable="false"
-                                                android:gravity="left|center_vertical"
-                                                android:text="Valid upto - Mar 4, 2020"
-                                                android:paddingLeft="5dp"
-                                                android:textColor="@color/colorPrimary"
-                                                android:textSize="14sp" />
+                                                android:orientation="horizontal">
+
+                                                <com.gifola.customfonts.MyTextViewMedium
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_marginTop="3dp"
+                                                    android:layout_marginBottom="3dp"
+                                                    android:focusable="false"
+                                                    android:gravity="left|center_vertical"
+                                                    android:text="Valid upto - "
+                                                    android:textColor="@color/colorPrimary"
+                                                    android:textSize="14sp" />
+
+
+                                                <com.gifola.customfonts.MyTextViewMedium
+                                                    android:id="@+id/date2"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_marginLeft="3dp"
+                                                    android:layout_marginTop="3dp"
+                                                    android:layout_marginRight="3dp"
+                                                    android:layout_marginBottom="3dp"
+                                                    android:focusable="false"
+                                                    android:gravity="left|center_vertical"
+                                                    android:paddingLeft="5dp"
+                                                    android:text="Mar 4, 2020"
+                                                    android:textColor="@color/colorPrimary"
+                                                    android:textSize="14sp" />
+
+                                            </LinearLayout>
 
                                         </androidx.cardview.widget.CardView>
 
                                     </LinearLayout>
 
                                     <androidx.cardview.widget.CardView
+                                        android:id="@+id/card3"
                                         android:layout_width="match_parent"
                                         android:layout_height="30dp"
-                                        app:cardCornerRadius="4dp"
                                         android:layout_margin="4dp"
-                                        android:id="@+id/card3"
                                         android:elevation="4dp"
-                                        >
+                                        app:cardCornerRadius="4dp">
 
                                         <com.gifola.customfonts.MyTextViewBold
+                                            android:id="@+id/text3"
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="3dp"
+                                            android:layout_marginTop="3dp"
                                             android:layout_marginRight="3dp"
                                             android:layout_marginBottom="3dp"
-                                            android:layout_marginTop="3dp"
                                             android:gravity="left|center_vertical"
-                                            android:text="Purpose (Optional)"
                                             android:paddingLeft="5dp"
-                                            android:id="@+id/text3"
+                                            android:text="Purpose (Optional)"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="16sp" />
 
@@ -548,32 +462,32 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:orientation="vertical"
-                                        android:visibility="gone"
-                                        >
+                                        android:visibility="gone">
+
                                         <androidx.cardview.widget.CardView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            app:cardCornerRadius="4dp"
-                                            app:cardBackgroundColor="@color/white"
                                             android:layout_margin="4dp"
                                             android:elevation="4dp"
-                                            >
+                                            app:cardBackgroundColor="@color/white"
+                                            app:cardCornerRadius="4dp">
 
                                             <com.gifola.customfonts.MyEditText
+                                                android:id="@+id/etPurpose"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
+                                                android:layout_gravity="top|left"
                                                 android:layout_marginLeft="3dp"
+                                                android:layout_marginTop="3dp"
                                                 android:layout_marginRight="3dp"
                                                 android:layout_marginBottom="3dp"
-                                                android:layout_marginTop="3dp"
                                                 android:gravity="top|left"
-                                                android:paddingLeft="5dp"
-                                                android:minLines="2"
-                                                android:layout_gravity="top|left"
-                                                android:maxLines="5"
-                                                android:textColorHint="@color/grey"
                                                 android:hint="Enter Purpose here.."
+                                                android:maxLines="5"
+                                                android:minLines="2"
+                                                android:paddingLeft="5dp"
                                                 android:textColor="@color/colorPrimary"
+                                                android:textColorHint="@color/grey"
                                                 android:textSize="14sp" />
 
                                         </androidx.cardview.widget.CardView>
@@ -582,7 +496,6 @@
                                     </LinearLayout>
 
                                 </LinearLayout>
-
 
 
                             </LinearLayout>
@@ -595,38 +508,37 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="5dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
                     android:gravity="right"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/btn_back"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/backcard"
                             android:layout_width="70dp"
                             android:layout_height="40dp"
-                            app:cardCornerRadius="4dp"
-                            android:id="@+id/backcard"
                             android:layout_margin="4dp"
-                            app:cardBackgroundColor="@color/colorPrimary"
                             android:elevation="4dp"
-                            >
+                            app:cardBackgroundColor="@color/colorPrimary"
+                            app:cardCornerRadius="4dp">
 
                             <com.gifola.customfonts.MyTextViewMedium
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
+                                android:layout_marginTop="3dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="3dp"
-                                android:layout_marginTop="3dp"
                                 android:gravity="center|center_vertical"
-                                android:text="Back"
                                 android:paddingLeft="5dp"
+                                android:text="Back"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -637,28 +549,27 @@
                         android:id="@+id/btn_send"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/sendcard"
                             android:layout_width="70dp"
                             android:layout_height="40dp"
-                            app:cardCornerRadius="4dp"
                             android:layout_margin="4dp"
-                            android:id="@+id/sendcard"
                             android:elevation="4dp"
                             app:cardBackgroundColor="@color/colorPrimary"
-                            >
+                            app:cardCornerRadius="4dp">
 
                             <com.gifola.customfonts.MyTextViewMedium
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
+                                android:layout_marginTop="3dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="3dp"
-                                android:layout_marginTop="3dp"
                                 android:gravity="center|center_vertical"
-                                android:text="Send"
                                 android:paddingLeft="5dp"
+                                android:text="Send"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -671,11 +582,8 @@
             </LinearLayout>
 
 
-
         </androidx.cardview.widget.CardView>
     </LinearLayout>
-
-
 
 
 </LinearLayout>

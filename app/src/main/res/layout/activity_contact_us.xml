@@ -59,7 +59,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.7"
-                                    android:text="To"
+                                    android:text="Email"
                                     android:layout_marginLeft="5dp"
                                     android:textSize="16sp"></com.gifola.customfonts.MyTextViewBold>
 
@@ -84,12 +84,10 @@
                                             android:layout_weight="1"
                                             android:background="@drawable/botton_tranparent_line"
                                             android:gravity="center_vertical"
-                                            android:inputType="number"
+                                            android:inputType="textEmailAddress"
                                             android:padding="6dp"
                                             android:singleLine="true"
-                                            android:focusable="false"
-                                            android:enabled="false"
-                                            android:text="admin@gmail.com"
+                                            android:hint="Enter Email Id"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="14sp"></com.gifola.customfonts.MyEditText>
 

@@ -1,5 +1,9 @@
 package com.gifola.apis;
 
+import com.gifola.model.CheckInListModel;
+import com.gifola.model.CheckInUserInfoModel;
+import com.gifola.model.DashboardMainListModel;
+import com.gifola.model.FavLocationModel;
 import com.gifola.model.RFCardModel;
 import com.gifola.model.RFLocationDataModel;
 import com.gifola.model.RFLocationModel;
@@ -79,4 +83,32 @@ public interface AdminAPI {
     @Headers({"Content-Type:application/json"})
     @POST(ApiURLs.REMOVE_SUB_MEMBERS)
     Call<ResponseBody> DeletedSubMember(@Body JsonObject jsonRequest);
+
+    @GET(ApiURLs.GET_CHECKIN_USER_INFO)
+    Call<CheckInUserInfoModel> GetCheckedInUserInfo(@Query("MobNo") String mobileNo, @Query("ReqType") Integer requestType);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.SEND_ALLOW_CHECKIN)
+    Call<ResponseBody> SendAllowCheckInRequest(@Body JsonObject jsonRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.CHECK_IN_LIST)
+    Call<CheckInListModel> GetCheckInList(@Body JsonObject jsonRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.DASHBOARD_MAIN_LIST)
+    Call<DashboardMainListModel> GetDashboardMainList(@Body JsonObject jsonRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.UPDATE_REQUEST_STATUS)
+    Call<ResponseBody> UpdateRequestStatus(@Body JsonObject jsonRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.FAV_PLACE_API)
+    Call<FavLocationModel> GetAllFavoritePlace(@Body JsonObject jsonRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.CONTACT_US_API)
+    Call<ResponseBody> SendContactRequestForm(@Body JsonObject jsonRequest);
+
 }

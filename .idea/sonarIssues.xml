@@ -28,7 +28,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../BMSTest/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../BMSTest/app/src/main/java/com/bmstest/app/activities/MovieListingActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../BMSTest/app/src/main/res/layout/activity_movie_listing.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/activity/BoardActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/activity/GujaratiMediumActivity.kt">
           <value>
             <set />
           </value>
@@ -38,7 +63,67 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/activity/LoginActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/activity/MyprofileActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/adapter/StandardListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/apis/AdminAPI.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/constants/SharedPreferenceHelper.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/model/BoardListData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/model/BoardModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/model/BoardResponseData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/model/LoginModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/model/LoginResponseData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/model/StandardListData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/models/Data.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/res/layout/activity_gujarati_medium.xml">
           <value>
             <set />
           </value>
@@ -58,12 +143,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/res/layout/layout_standard_list_items.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/res/menu/main_menu.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/res/values/colors.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/res/values/strings.xml">
           <value>
             <set />
           </value>
@@ -93,7 +188,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/ContactUsActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/DashboardActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/DashboardActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/GuestDetailActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/GuestDetailActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/HostDetailActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/HostDetailActivity.kt">
           <value>
             <set />
           </value>
@@ -118,6 +243,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/MyProfileActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/OTPActivity.java">
           <value>
             <set />
@@ -133,7 +263,52 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/RequestPermissionActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/RequestPermissionActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/SendPermissionActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/SignupActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/AllowCheckInListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/CallLogsAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/ContactsAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/DashboardFrequentVisitorListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/DashboardMainListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/FavoritePlacesListAdapter.kt">
           <value>
             <set />
           </value>
@@ -144,6 +319,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/RFCardListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/RequestCheckInListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/SchduleDaysAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/adapter/ScheduleDaysAdapter.kt">
           <value>
             <set />
           </value>
@@ -213,12 +403,62 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/AppUser.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/CheckInUserInfoModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/ContactsModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/DashboardListData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/DashboardMainListModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/FavLocationModelItem.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/LocationDataModelItem.kt">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/MemberDetail.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/MemberSite.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/RFCardModelItem.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/RFLocationDataModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/ScheduleDaysModel.kt">
           <value>
             <set />
           </value>
@@ -363,6 +603,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_person_24.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/drawable/ic_copy.xml">
           <value>
             <set />
@@ -378,7 +623,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_add_u_h_f_card.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_host_detail.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_my_logs.xml">
           <value>
             <set />
           </value>
@@ -393,7 +658,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_permission_detail.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_q_r_scan.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_request_permission.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_send_permission.xml">
           <value>
             <set />
           </value>
@@ -403,7 +683,47 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/custom_fav.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/custom_toolbar.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/inside_main_activity.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_allow_checkin_item_view.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_call_logs_items.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_dashboard_main_list_items.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_qr_dialog.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_rf_card_items.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/layout_schedule_days_items.xml">
           <value>
             <set />
           </value>
@@ -418,12 +738,162 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/network_security_config.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/ChatMessageActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/CreateGroupChatActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/EditProfileActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/GroupSettingsActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/SearchActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/UserDetailsActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/VerifyMobileActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/ViewFollowersActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/adapters/SearchedListAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/adapters/UsersFollowingFollowersAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/apis/APIInterface.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/apis/ApiURLs.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/fragments/PlayFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/models/LoginDataModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/utils/ImageFileFilter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/utils/ImagePath.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/utils/Utility.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/drawable-v24/btn_yellow_bg.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/drawable-v24/ic_yellow_circle_bg.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/activity_edit_profile.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/activity_search.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/activity_start_chat.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/activity_user_details.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/dialog_gender_selection.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/layout_search_user_item_view.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/values/colors.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/xml/provider_paths.xml">
           <value>
             <set />
           </value>
@@ -468,6 +938,126 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Activities/LiveFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Activities/ShowBroadcastActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Activities/SignUpMobileActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Activities/VideoActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Adapters/LiveUserAdapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Apis/APIInterface.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Models/LiveListingData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/Utils/UniqueNumberGenerator.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/apis/APIInterface.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/apis/AdminAPI.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/apis/ApiURLs.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/apis/ApiURLs.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/apis/ServiceGenerator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/apis/ServiceGenerator.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/model/BaseModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/model/RegistrationData.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/model/RegistrationModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/utils/GlobalFunctions.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/java/com/beelivee/utils/StaticStrings.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/res/layout/activity_show_broadcast.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/res/layout/activity_signup_mobile.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/res/menu/bottom_navigation_menu.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../beeliveeapp-android/app/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../nfc-text-beam/app/src/main/AndroidManifest.xml">
           <value>
             <set />
@@ -493,22 +1083,57 @@
             <set />
           </value>
         </entry>
-        <entry key="D:/Flutter Projects/webinar-mobile/android/app/src/main/AndroidManifest.xml">
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/furclavi/lib/CategorySlectionScreen.dart">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="D:/Flutter Projects/webinar-mobile/lib/activities/login_activity.dart">
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/haeer/lib/activities/hour_registration.dart">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="D:/Flutter Projects/webinar-mobile/lib/main.dart">
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/haeer/lib/activities/leave_absence_registration.dart">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="D:/Flutter Projects/webinar-mobile/pubspec.yaml">
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/haeer/lib/activities/leave_of_absence_form.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/haeer/lib/activities/manual_hours_registration_form.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/haeer/lib/activities/notification_list.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/haeer/lib/activities/sick_leave_list.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/webinar-mobile/android/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/webinar-mobile/lib/activities/login_activity.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/webinar-mobile/lib/main.dart">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../Flutter Projects/webinar-mobile/pubspec.yaml">
           <value>
             <set />
           </value>

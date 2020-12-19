@@ -10,4 +10,5 @@ class RFLocationDataModel() : Serializable{
     val mem_sub_mem_per: Int = 0
     val site_title: String = ""
     val mem_id: Int = 0
+    val mem_site_id: Int = 0
 }

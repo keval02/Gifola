@@ -79,6 +79,9 @@ class AddSubMemberActivity : AppCompatActivity() {
                 selectedLocationId == -1 -> {
                     Global.displayToastMessage(getString(R.string.message_valid_card_location), applicationContext)
                 }
+                rfCardDataModelItems.size == 4 -> {
+                    Global.displayToastMessage(getString(R.string.message_member_limit_exceed), applicationContext)
+                }
                 else -> {
                     addSubMember(mobileNo, memberName, selectedLocationId, selectedLocationMemberId, selectedLocationAddress)
                 }

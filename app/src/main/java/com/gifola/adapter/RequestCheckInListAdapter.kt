@@ -14,7 +14,7 @@ import com.gifola.model.RFCardModelItem
 import kotlinx.android.synthetic.main.layout_allow_checkin_item_view.view.*
 
 
-abstract class RequestCheckInListAdapter(var context: Activity, var checkInList: MutableList<CheckInListModelItem>) : RecyclerView.Adapter<RequestCheckInListAdapter.RequestCheckInListViewHolder>() {
+abstract class RequestCheckInListAdapter(var context: Activity, var checkInList: MutableList<CheckInListModelItem>, var storedList: MutableList<CheckInListModelItem>) : RecyclerView.Adapter<RequestCheckInListAdapter.RequestCheckInListViewHolder>() {
 
 
     class RequestCheckInListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,7 +48,7 @@ abstract class RequestCheckInListAdapter(var context: Activity, var checkInList:
 
     fun searchResult(searchText : String): ArrayList<CheckInListModelItem> {
         val searchedList : ArrayList<CheckInListModelItem> = ArrayList()
-        checkInList.forEach {
+        storedList.forEach {
             if(it.MobileNo.contains(searchText)){
                 searchedList.add(it)
             }

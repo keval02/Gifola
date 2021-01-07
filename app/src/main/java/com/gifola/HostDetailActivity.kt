@@ -181,7 +181,7 @@ class HostDetailActivity : AppCompatActivity() {
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH))
 
-            dpd.datePicker.setMinDate(myCalendar.getTimeInMillis())
+            dpd.datePicker.minDate = Calendar.getInstance().timeInMillis
             dpd.show()
         })
         validDateLL.setOnClickListener(View.OnClickListener { // TODO Auto-generated method stub
@@ -189,7 +189,7 @@ class HostDetailActivity : AppCompatActivity() {
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH))
 
-            dpd.datePicker.setMinDate(myCalendar.getTimeInMillis())
+            dpd.datePicker.minDate = Calendar.getInstance().timeInMillis
             dpd.show()
         })
         time1.setOnClickListener(View.OnClickListener { // TODO Auto-generated method stub

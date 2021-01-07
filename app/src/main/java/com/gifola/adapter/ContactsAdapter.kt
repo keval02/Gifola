@@ -11,7 +11,7 @@ import com.wickerlabs.logmanager.LogObject
 import kotlinx.android.synthetic.main.layout_call_logs_items.view.*
 
 
-abstract class ContactsAdapter(var context: Activity, var checkInList: MutableList<ContactsModel>) : RecyclerView.Adapter<ContactsAdapter.ContactsListViewHolder>() {
+abstract class ContactsAdapter(var context: Activity, var checkInList: MutableList<ContactsModel>, var storedList: MutableList<ContactsModel>) : RecyclerView.Adapter<ContactsAdapter.ContactsListViewHolder>() {
 
 
     class ContactsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +39,7 @@ abstract class ContactsAdapter(var context: Activity, var checkInList: MutableLi
 
     fun searchResult(searchText : String): ArrayList<ContactsModel> {
         val searchedList : ArrayList<ContactsModel> = ArrayList()
-        checkInList.forEach {
+        storedList.forEach {
             if(it.contactNum.contains(searchText) || it.contactName.toLowerCase().contains(searchText.toLowerCase())){
                 searchedList.add(it)
             }

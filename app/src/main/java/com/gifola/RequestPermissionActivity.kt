@@ -64,7 +64,7 @@ class RequestPermissionActivity : AppCompatActivity() {
     }
 
     private fun fetchid() {
-        checkInListAdapter = object : RequestCheckInListAdapter(this, checkInList) {
+        checkInListAdapter = object : RequestCheckInListAdapter(this, checkInList, checkInListAll) {
             override fun onCheckedList(number: String, contactName: String) {
                 refactorUsersMobileNum(number, contactName, true)
             }
@@ -75,7 +75,7 @@ class RequestPermissionActivity : AppCompatActivity() {
         rv_permission_checkin.adapter = checkInListAdapter
 
 
-        contactsAdapter = object : ContactsAdapter(this, contactList) {
+        contactsAdapter = object : ContactsAdapter(this, contactList, contactListAll) {
             override fun selectNumber(number: String, contactName: String) {
                 refactorUsersMobileNum(number, contactName)
             }
@@ -99,7 +99,7 @@ class RequestPermissionActivity : AppCompatActivity() {
             callLogs.clear()
             callLogs.addAll(recentCallLogs)
             callLogsListAll.addAll(recentCallLogs)
-            callLogsAdapter = object : CallLogsAdapter(this, callLogs) {
+            callLogsAdapter = object : CallLogsAdapter(this, callLogs, callLogsListAll) {
                 override fun selectNumber(number: String, contactName: String) {
                     refactorUsersMobileNum(number, contactName)
                 }

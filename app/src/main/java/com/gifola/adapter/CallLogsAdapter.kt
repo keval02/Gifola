@@ -14,7 +14,7 @@ import com.wickerlabs.logmanager.LogObject
 import kotlinx.android.synthetic.main.layout_call_logs_items.view.*
 
 
-abstract class CallLogsAdapter(var context: Activity, var checkInList: MutableList<LogObject>) : RecyclerView.Adapter<CallLogsAdapter.CallLogsListViewHolder>() {
+abstract class CallLogsAdapter(var context: Activity, var checkInList: MutableList<LogObject>, var storedList: MutableList<LogObject>) : RecyclerView.Adapter<CallLogsAdapter.CallLogsListViewHolder>() {
 
     class CallLogsListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -40,7 +40,7 @@ abstract class CallLogsAdapter(var context: Activity, var checkInList: MutableLi
 
     fun searchResult(searchText: String): ArrayList<LogObject> {
         val searchedList: ArrayList<LogObject> = ArrayList()
-        checkInList.forEach {
+        storedList.forEach {
             if (it.number.contains(searchText) || it.contactName.toLowerCase().contains(searchText.toLowerCase())) {
                 searchedList.add(it)
             }

@@ -65,7 +65,8 @@ class HostDetailActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
     var txt_title: TextView? = null
     var member: ArrayList<String> = ArrayList()
-    lateinit var myCalendar: Calendar
+     var myCalendar: Calendar = Calendar.getInstance()
+    var validDateCalender : Calendar = Calendar.getInstance()
     var checkInUserInfoModel : CheckInUserInfoModel = CheckInUserInfoModel()
     var bar: ProgressDialog? = null
     var adminAPI: AdminAPI? = null
@@ -98,7 +99,13 @@ class HostDetailActivity : AppCompatActivity() {
         }
 
         try{
-             rfLocationList.addAll(checkInUserInfoModel.appUser.memberDetails[0].memberSites)
+            checkInUserInfoModel.appUser.memberDetails.forEachIndexed { index, memberDetail ->
+                memberDetail.memberSites.forEach {
+                    rfLocationList.add(it)
+                }
+            }
+
+            // rfLocationList.addAll(checkInUserInfoModel.appUser.memberDetails[0].memberSites)
             if(rfLocationList.size > 0){
                 rfLocationList.forEachIndexed { index, rfLocationModel ->
                     member.add(rfLocationModel.MemSiteTitle)
@@ -157,7 +164,6 @@ class HostDetailActivity : AppCompatActivity() {
         time2.text = toTime
 
 
-        myCalendar = Calendar.getInstance()
         val date = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             // TODO Auto-generated method stub
             myCalendar.set(Calendar.YEAR, year)
@@ -168,9 +174,9 @@ class HostDetailActivity : AppCompatActivity() {
         }
         val validDate = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             // TODO Auto-generated method stub
-            myCalendar.set(Calendar.YEAR, year)
-            myCalendar.set(Calendar.MONTH, monthOfYear)
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            validDateCalender.set(Calendar.YEAR, year)
+            validDateCalender.set(Calendar.MONTH, monthOfYear)
+            validDateCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
             date2.text =  "$year-${monthOfYear + 1}-$dayOfMonth"
             //                updateLabel();
@@ -185,11 +191,11 @@ class HostDetailActivity : AppCompatActivity() {
             dpd.show()
         })
         validDateLL.setOnClickListener(View.OnClickListener { // TODO Auto-generated method stub
-            val dpd: DatePickerDialog = DatePickerDialog(this, validDate, myCalendar
-                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH))
+            val dpd: DatePickerDialog = DatePickerDialog(this, validDate, validDateCalender
+                    .get(Calendar.YEAR), validDateCalender.get(Calendar.MONTH),
+                    validDateCalender.get(Calendar.DAY_OF_MONTH))
 
-            dpd.datePicker.minDate = Calendar.getInstance().timeInMillis
+            dpd.datePicker.minDate = myCalendar.timeInMillis
             dpd.show()
         })
         time1.setOnClickListener(View.OnClickListener { // TODO Auto-generated method stub

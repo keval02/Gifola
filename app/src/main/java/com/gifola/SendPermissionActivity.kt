@@ -328,7 +328,6 @@ class SendPermissionActivity : AppCompatActivity() {
         }
     }
 
-
     internal inner class GetUserContacts() : AsyncTask<Void?, Void?, String?>() {
         override fun onPreExecute() {
             super.onPreExecute()
@@ -365,7 +364,6 @@ class SendPermissionActivity : AppCompatActivity() {
             return json
         }
     }
-
 
     private fun refactorUsersMobileNum(number: String, name: String, isFavourite : Boolean = false) {
         var selectedNumber = number.replace("(", "")

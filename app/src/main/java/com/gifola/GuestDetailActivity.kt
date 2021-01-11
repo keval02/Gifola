@@ -24,10 +24,7 @@ import com.gifola.apis.SeriveGenerator
 import com.gifola.constans.Global
 import com.gifola.constans.Global.checkedInUserInfo
 import com.gifola.constans.SharedPreferenceHelper
-import com.gifola.model.CheckInUserInfoModel
-import com.gifola.model.RFLocationModel
-import com.gifola.model.ScheduleDaysModel
-import com.gifola.model.UserData
+import com.gifola.model.*
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_permission_detail.*
@@ -44,11 +41,12 @@ class GuestDetailActivity : AppCompatActivity() {
     var txt_title: TextView? = null
     var member: ArrayList<String> = ArrayList()
     var myCalendar: Calendar = Calendar.getInstance()
+    var validDateCalender : Calendar = Calendar.getInstance()
     var checkInUserInfoModel: CheckInUserInfoModel = CheckInUserInfoModel()
     var bar: ProgressDialog? = null
     var adminAPI: AdminAPI? = null
     var preferenceHelper: SharedPreferenceHelper? = null
-    var rfLocationList: MutableList<RFLocationModel> = ArrayList()
+    var rfLocationList: MutableList<MemberSite> = ArrayList()
     var userData: UserData? = null
     var isAllowNow: Boolean = false
     var isScheduleCheckIn: Boolean = false
@@ -123,9 +121,9 @@ class GuestDetailActivity : AppCompatActivity() {
             //                updateLabel();
         }
         val validDate = OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            myCalendar.set(Calendar.YEAR, year)
-            myCalendar.set(Calendar.MONTH, monthOfYear)
-            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            validDateCalender.set(Calendar.YEAR, year)
+            validDateCalender.set(Calendar.MONTH, monthOfYear)
+            validDateCalender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             date2.text = "$year-${monthOfYear + 1}-$dayOfMonth"
             //                updateLabel();
         }
@@ -141,11 +139,11 @@ class GuestDetailActivity : AppCompatActivity() {
 
         })
         validDateLL.setOnClickListener(View.OnClickListener { // TODO Auto-generated method stub
-            val dpd: DatePickerDialog = DatePickerDialog(this@GuestDetailActivity, validDate, myCalendar
-                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH))
+            val dpd: DatePickerDialog = DatePickerDialog(this@GuestDetailActivity, validDate, validDateCalender
+                    .get(Calendar.YEAR), validDateCalender.get(Calendar.MONTH),
+                    validDateCalender.get(Calendar.DAY_OF_MONTH))
 
-            dpd.datePicker.minDate = Calendar.getInstance().timeInMillis
+            dpd.datePicker.minDate = myCalendar.timeInMillis
             dpd.show()
         })
         time1.setOnClickListener(View.OnClickListener { // TODO Auto-generated method stub
@@ -220,7 +218,7 @@ class GuestDetailActivity : AppCompatActivity() {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // The drop down view
         spinner2.adapter = spinnerArrayAdapter
         sendcard.setOnClickListener(View.OnClickListener {
-            if (rfLocationList.isEmpty() || rfLocationList[0].size <= 0) {
+            if (rfLocationList.isEmpty() || rfLocationList.size <= 0) {
                 Global.displayToastMessage(getString(R.string.message_valid_card_location), applicationContext)
             } else if (!isAllowNow && !isScheduleCheckIn) {
                 Global.displayToastMessage(getString(R.string.message_valid_time_zone), applicationContext)
@@ -247,9 +245,9 @@ class GuestDetailActivity : AppCompatActivity() {
                     App_usr_id = checkInUserInfoModel.appUser.AppUserId
                 }
 
-                if (rfLocationList[0].size > 0) {
+                if (rfLocationList.size > 0) {
                     val selectedLocationPosition = spinner2.selectedItemPosition
-                    Mem_site_id = rfLocationList[0][selectedLocationPosition].mem_site_id
+                    Mem_site_id = rfLocationList[selectedLocationPosition].MemSiteId
                 }
 
                 if (isAllowNow) {
@@ -378,22 +376,22 @@ class GuestDetailActivity : AppCompatActivity() {
         toolbar!!.setNavigationOnClickListener { onBackPressed() }
     }
 
-    private fun updateLabel() {
-        val myFormat = "MM/dd/yy" //In which you need put here
-        val sdf = SimpleDateFormat(myFormat, Locale.US)
-        date1!!.text = sdf.format(myCalendar!!.time)
-    }
 
     private fun getRFLocationList() {
-        val responseBodyCall: Call<RFLocationModel>? = adminAPI?.GetSubMemberLocations(userData?.app_usr_id!!)
-        responseBodyCall?.enqueue(object : Callback<RFLocationModel?> {
-            override fun onResponse(call: Call<RFLocationModel?>, response: Response<RFLocationModel?>) {
+        val responseBodyCall: Call<CheckInUserInfoModel>? = adminAPI?.GetCheckedInUserInfo(userData?.app_usr_mobile!!, 1)
+        responseBodyCall?.enqueue(object : Callback<CheckInUserInfoModel?> {
+            override fun onResponse(call: Call<CheckInUserInfoModel?>, response: Response<CheckInUserInfoModel?>) {
                 if (response.code() == 200) {
                     try {
-                        response.body()?.let { rfLocationList.add(it) }
+                        val userDataModel: CheckInUserInfoModel? = response.body()
+                        userDataModel?.appUser?.memberDetails?.forEachIndexed { index, memberDetail ->
+                            memberDetail.memberSites.forEach {
+                                rfLocationList.add(it)
+                            }
+                        }
                         if (rfLocationList.size > 0) {
-                            rfLocationList[0].forEachIndexed { index, rfLocationModel ->
-                                member.add(rfLocationModel.site_title)
+                            rfLocationList.forEachIndexed { index, rfLocationModel ->
+                                member.add(rfLocationModel.MemSiteTitle)
                             }
 
                             val spinnerArrayAdapter = ArrayAdapter(this@GuestDetailActivity, android.R.layout.simple_spinner_item, member)
@@ -411,7 +409,7 @@ class GuestDetailActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<RFLocationModel?>, t: Throwable) {
+            override fun onFailure(call: Call<CheckInUserInfoModel?>, t: Throwable) {
                 Global.displayToastMessage(getString(R.string.message_something_went_wrong), applicationContext)
             }
         })

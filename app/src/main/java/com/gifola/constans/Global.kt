@@ -15,6 +15,7 @@ object Global {
     var otpString = "otp"
     var mobileNumberText = "mobileNumber"
     var isAlreadyRegistered = "isAlreadyRegistered"
+    var userID = "userId"
     var checkedInUserInfo = "checkedInUserInfo"
     var keyIsFromFavourite = "isFavorite"
 

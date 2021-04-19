@@ -4,6 +4,7 @@ public class ApiURLs {
 
     public static final String BASE_URL = "http://3.6.68.243/";
     public static final String API_BASE = "mobileaccess/api/";
+    public static final String SMS_BASE_URL = "http://api.msg91.com/";
 
     public static final String IMAGE_URL = "http://3.6.68.243/mobileaccess/Profile_Images/";
     public static final String CHECK_USERS_MOBILE_NO = API_BASE + "app_usr_master/GetDataById/";
@@ -30,4 +31,22 @@ public class ApiURLs {
     public static final String UPDATE_REQUEST_STATUS = "DeviceService/api/Dashboard/StatusApi";
     public static final String FAV_PLACE_API = "DeviceService/api/Dashboard/MyFavPlacesApi";
     public static final String CONTACT_US_API = "DeviceService/api/Service/ContactUsApi";
+    public static final String UPDATE_USER_TOKEN = "DeviceService/api/Home/UpdateTokenApi";
+    public static final String SET_PRIVACY = "DeviceService/api/Home/SetPrivacy";
+    public static final String GET_PRIVACY = "DeviceService/api/Home/GetPrivacy";
+    public static final String SMS_POST_URL = "api/v5/flow/";
+
+
+    /*{
+        "AppUserId": 1,
+            "VisitorSecret": 1,
+            "SwitchNotify": 1,
+            "VisitSecret": 0,
+            "HideVisit": 1
+    }*/
+/*
+    Logic :
+
+            1 is toggle green
+0 is toggle off*/
 }

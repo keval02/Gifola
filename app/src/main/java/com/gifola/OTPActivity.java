@@ -39,15 +39,26 @@ import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import com.gifola.helper.OtpEditText;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OTPActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GetOtpInterface, GoogleApiClient.OnConnectionFailedListener {
@@ -62,9 +73,12 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
     String generatedOTP = "";
     ProgressDialog bar;
     AdminAPI adminAPI;
+    AdminAPI smsAPI;
     SharedPreferenceHelper preferenceHelper;
     Boolean isAlreadyRegistered = false;
     OtpEditText et_otp;
+    String token = "";
+    Integer userId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +92,23 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
         et_otp = findViewById(R.id.et_otp);
         mobileNum = getIntent().getStringExtra(Global.INSTANCE.getMobileNumberText());
         isAlreadyRegistered = getIntent().getBooleanExtra(Global.INSTANCE.isAlreadyRegistered() , false);
+        if(isAlreadyRegistered){
+            userId = getIntent().getIntExtra(Global.INSTANCE.getUserID(), 0);
+        }
         preferenceHelper = new SharedPreferenceHelper(getApplicationContext());
         adminAPI = SeriveGenerator.getAPIClass();
+        smsAPI = SeriveGenerator.getSMSAPIClass();
         bar = new ProgressDialog(this);
         if (!mobileNum.equals("")) {
             mobileNumberTextView.setText("send to +91" + mobileNum);
         }
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                token = task.getResult().getToken();
+            }
+        });
 
         SmsHashCodeHelper smsHashCodeHelper = new SmsHashCodeHelper(this);
         smsHashCodeHelper.getAppHashCode();
@@ -156,18 +181,13 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
                     String otp = et_otp.getText().toString().trim();
                     if (generatedOTP.equals(otp)) {
                         if(isAlreadyRegistered){
-                            preferenceHelper.setBoolean(Global.INSTANCE.isLoggedIn(), true);
-                            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finishAffinity();
+                            bar.show();
+                            UpdateUserToken(false);
                         }else {
                             SendUserMobileNumber(mobileNum);
                         }
 
-                    }/* else {
-                        Global.INSTANCE.displayToastMessage(getString(R.string.resend_otp), getApplicationContext());
-                    }*/
+                    }
                 }
             }
         });
@@ -182,7 +202,9 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
         generatedOTP = simpleOTPGenerator.random(4);
         String message = generatedOTP + Global.INSTANCE.getSmsText();
 
-        new SendOTPToUser(mobileNum, message, generatedOTP).execute();
+        Log.e("mobileNumber" , mobileNum);
+        SendSMSToUser("91" + mobileNum, generatedOTP);
+        //new SendOTPToUser(mobileNum, message, generatedOTP).execute();
     }
 
     @Override
@@ -236,6 +258,7 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
                     .appendQueryParameter("route", "B")
                     .appendQueryParameter("sender", "GIFOLA")
                     .appendQueryParameter("message", otpMessage);*/
+
             builder.scheme("http")
                     .authority("api.msg91.com")
                     .appendPath("api")
@@ -248,10 +271,30 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
                     .appendQueryParameter("invisible", "1")
                     .appendQueryParameter("otp", otp);
 
+            Log.e("sendOtp" , builder.build().toString());
+            String apiURL = "https://api.msg91.com/api/v5/flow/?authkey=292349A2F1YiBtk5d6e2ab0";
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("flow_id" , "6066d07b366b7638164ff3f7");
+            jsonObject.addProperty("sender" , "GIFOLA");
+            JsonArray jsonArray = new JsonArray();
+            JsonObject arrayObject = new JsonObject();
+            arrayObject.addProperty("mobiles" , mobileNumber);
+            arrayObject.addProperty("OTP" , otp);
+            arrayObject.addProperty("PlayCode" , "2abc567");
+            jsonArray.add(arrayObject);
+            jsonObject.add("recipients" , jsonArray);
+
+
+            List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+            parameters.add(new BasicNameValuePair("",jsonObject.toString()));
+
+
+
             String json = "";
 
             try {
                 json = new ServiceHandler().makeServiceCall(builder.build().toString(), ServiceHandler.GET);
+               // json = new ServiceHandler().makeServiceCall(apiURL, ServiceHandler.POST, parameters);
             } catch (Exception e) {
                 Log.e("exception", e.getMessage());
             }
@@ -262,11 +305,42 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
 
         @Override
         protected void onPostExecute(String s) {
+            Log.e("resposne" , s);
             super.onPostExecute(s);
 
 
         }
     }
+
+    void SendSMSToUser(String mobileNum, String otp) {
+        bar.show();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("flow_id" , "6066d07b366b7638164ff3f7");
+        jsonObject.addProperty("sender" , "GIFOLA");
+        JsonArray jsonArray = new JsonArray();
+        JsonObject arrayObject = new JsonObject();
+        arrayObject.addProperty("mobiles" , mobileNum);
+        arrayObject.addProperty("OTP" , otp);
+        arrayObject.addProperty("PlayCode" , "2gc81RJaZG6");
+        jsonArray.add(arrayObject);
+        jsonObject.add("recipients" , jsonArray);
+
+        Call<ResponseBody> responseBodyCall = smsAPI.SendSMS("292349A2F1YiBtk5d6e2ab0", jsonObject);
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                bar.hide();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                bar.hide();
+            }
+        });
+    }
+
+
 
     void SendUserMobileNumber(String mobileNum) {
         bar.show();
@@ -275,19 +349,43 @@ public class OTPActivity extends AppCompatActivity implements GoogleApiClient.Co
         userData.setApp_usr_mobile(mobileNum);
         Gson gson = new Gson();
         String jsonDATA = gson.toJson(userData);
-        Call<ResponseBody> responseBodyCall = adminAPI.RegisterUserMobileNumber(userData.getApp_usr_mobile());
+        Call<UserData> responseBodyCall = adminAPI.RegisterUserMobileNumber(userData.getApp_usr_mobile()/*, token*/);
+        responseBodyCall.enqueue(new Callback<UserData>() {
+            @Override
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
+                if (response.code() == 200) {
+                    Global.INSTANCE.setUserMe(userData, preferenceHelper);
+                    userId = response.body().getApp_usr_id();
+                    UpdateUserToken(true);
+                } else {
+                    bar.hide();
+                    Global.INSTANCE.displayToastMessage(getString(R.string.message_something_went_wrong), getApplicationContext());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserData> call, Throwable t) {
+                bar.hide();
+                Global.INSTANCE.displayToastMessage(getString(R.string.message_something_went_wrong), getApplicationContext());
+            }
+        });
+    }
+
+    void UpdateUserToken(final Boolean isForFirstTime) {
+        Call<ResponseBody> responseBodyCall = adminAPI.UpdateUserToken(userId, token);
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 bar.hide();
                 if (response.code() == 200) {
-                    Global.INSTANCE.setUserMe(userData, preferenceHelper);
                     preferenceHelper.setBoolean(Global.INSTANCE.isLoggedIn(), true);
-                    preferenceHelper.setBoolean(Global.INSTANCE.isEnteredFirstTime(), true);
+                    if(isForFirstTime){
+                        preferenceHelper.setBoolean(Global.INSTANCE.isEnteredFirstTime(), true);
+                    }
                     Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                    finish();
+                    finishAffinity();
                 } else {
                     Global.INSTANCE.displayToastMessage(getString(R.string.message_something_went_wrong), getApplicationContext());
                 }

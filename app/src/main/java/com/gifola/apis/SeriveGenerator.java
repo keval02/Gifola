@@ -30,6 +30,18 @@ public class SeriveGenerator {
         return retrofit.create(AdminAPI.class);
     }
 
+    public static AdminAPI getSMSAPIClass() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiURLs.SMS_BASE_URL)
+                .client(getRequestHeader())
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(StringConverterFactory.create())
+                .build();
+        return retrofit.create(AdminAPI.class);
+    }
+
     @NonNull
     public static MultipartBody.Part prepareFilePart(String partName, String fileUri) {
         File file = new File(fileUri);

@@ -161,6 +161,7 @@ public class SignupActivity extends AppCompatActivity {
                         UserData userData = dataModel.get(0);
                         Global.INSTANCE.setUserMe(userData, preference);
                         intent.putExtra(Global.INSTANCE.isAlreadyRegistered(), true);
+                        intent.putExtra(Global.INSTANCE.getUserID(), userData.getApp_usr_id());
                     }
                     startActivity(intent);
 

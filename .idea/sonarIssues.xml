@@ -23,6 +23,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2c5aa7b2776aeceeea91008d71429535/jetified-play-services-auth-api-phone-17.4.0/jars/classes.jar!/com/google/android/gms/auth/api/phone/SmsRetriever.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc16b8a8de8fb9e04d93cbec0ddcb787/jetified-play-services-basement-17.1.1/jars/classes.jar!/com/google/android/gms/common/api/CommonStatusCodes.class">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Android-NFC-SDK/app/build.gradle">
           <value>
             <set />
@@ -44,6 +54,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../BMSTest/app/src/main/res/layout/activity_movie_listing.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/build.gradle">
           <value>
             <set />
           </value>
@@ -78,6 +93,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/activity/WebViewActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/adapter/StandardListAdapter.kt">
           <value>
             <set />
@@ -89,6 +109,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/constants/SharedPreferenceHelper.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/java/com/commercejunction/fcm/FcmMessageService.kt">
           <value>
             <set />
           </value>
@@ -164,6 +189,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../CommerceJunction/app/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../CommerceJunction/build.gradle">
           <value>
             <set />
           </value>
@@ -254,6 +284,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/OTPActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/OTPActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/PrivacyPolicyActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/PrivacyPolicyActivity.kt">
           <value>
             <set />
           </value>
@@ -383,6 +428,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/fcm/FcmMessageService.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/helper/AESPasswordAlgo.java">
           <value>
             <set />
@@ -449,6 +499,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/MemberSite.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/gifola/model/PrivacySettingsModel.kt">
           <value>
             <set />
           </value>
@@ -668,6 +723,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_privacy_policy.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_q_r_scan.xml">
           <value>
             <set />
@@ -758,6 +818,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Jogo/app/build.gradle">
           <value>
             <set />
@@ -793,6 +858,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/SearchUserMessageActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/UserDetailsActivity.kt">
           <value>
             <set />
@@ -804,6 +874,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/activities/ViewFollowersActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/adapters/SearchedGroupsListAdapter.kt">
           <value>
             <set />
           </value>
@@ -824,6 +899,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/apis/ApiURLs.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/java/com/jogo/app/fcm/FcmMessageService.kt">
           <value>
             <set />
           </value>
@@ -884,6 +964,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/dialog_gender_selection.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/dialog_music_player.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Jogo/app/src/main/res/layout/layout_music_items.xml">
           <value>
             <set />
           </value>

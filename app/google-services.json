@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "868524029527",
+    "project_id": "gifolacheckin",
+    "storage_bucket": "gifolacheckin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868524029527:android:eaf9f52a7efea7bd641512",
+        "android_client_info": {
+          "package_name": "com.gifola"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868524029527-q8loifvpcfekrm058p66urfl2p6q8230.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gifola",
+            "certificate_hash": "3c0138bf36049325500258fa1d42b0d5f54c8b08"
+          }
+        },
+        {
+          "client_id": "868524029527-gplvvhie0i0kkva4tngncroq3grlcm98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZPblYtGGTMvm68GFE_ey3lsX55N0XaYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868524029527-gplvvhie0i0kkva4tngncroq3grlcm98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

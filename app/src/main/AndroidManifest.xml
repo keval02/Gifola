@@ -153,6 +153,24 @@
             </intent-filter>
         </activity>
 
+        <!--FireBase-->
+
+        <service android:name=".fcm.FcmMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <!--FireBase-->
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/bell" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
+
+
 
 </manifest>

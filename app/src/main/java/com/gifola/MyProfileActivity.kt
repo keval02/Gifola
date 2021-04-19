@@ -80,6 +80,7 @@ class MyProfileActivity : AppCompatActivity() {
     var userData: UserData? = null
     var adminAPI: AdminAPI? = null
     var progressDialog: ProgressDialog? = null
+    var selectedDate : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
@@ -214,7 +215,7 @@ class MyProfileActivity : AppCompatActivity() {
         }
 
         override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-            val date = "$day/$month/$year"
+            val date = "$year-${month + 1}-$day"
             editText!!.setText(date)
         }
 

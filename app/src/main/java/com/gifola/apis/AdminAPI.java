@@ -4,11 +4,13 @@ import com.gifola.model.CheckInListModel;
 import com.gifola.model.CheckInUserInfoModel;
 import com.gifola.model.DashboardMainListModel;
 import com.gifola.model.FavLocationModel;
+import com.gifola.model.PrivacySettingsModel;
 import com.gifola.model.RFCardModel;
 import com.gifola.model.RFLocationDataModel;
 import com.gifola.model.RFLocationModel;
 import com.gifola.model.SubMemberModel;
 import com.gifola.model.UHFCardModel;
+import com.gifola.model.UserData;
 import com.google.gson.JsonObject;
 
 
@@ -28,9 +30,9 @@ import retrofit2.http.Query;
 
 public interface AdminAPI {
 
-    @Multipart
+    @FormUrlEncoded
     @POST(ApiURLs.ADD_USERS_DETAILS)
-    Call<ResponseBody> RegisterUserMobileNumber(@Part("app_usr_mobile") String mobile);
+    Call<UserData> RegisterUserMobileNumber(@Field("app_usr_mobile") String mobile/*, @Part("token") String token*/);
 
     @Multipart
     @PUT(ApiURLs.ADD_USER_DETAILS)
@@ -111,4 +113,17 @@ public interface AdminAPI {
     @POST(ApiURLs.CONTACT_US_API)
     Call<ResponseBody> SendContactRequestForm(@Body JsonObject jsonRequest);
 
+    @POST(ApiURLs.UPDATE_USER_TOKEN)
+    Call<ResponseBody> UpdateUserToken(@Query("usrId") int userId, @Query("token") String token);
+
+    @GET(ApiURLs.GET_PRIVACY)
+    Call<PrivacySettingsModel> GetPrivacyData(@Query("AppUserId") int userId);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.SET_PRIVACY)
+    Call<ResponseBody> SetPrivacySettings(@Body JsonObject jsonRequest);
+
+    @Headers({"Content-Type:application/json"})
+    @POST(ApiURLs.SMS_POST_URL)
+    Call<ResponseBody> SendSMS(@Query("authkey") String authKey,@Body JsonObject jsonRequest);
 }

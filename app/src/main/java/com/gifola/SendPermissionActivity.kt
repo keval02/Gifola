@@ -90,11 +90,15 @@ class SendPermissionActivity : AppCompatActivity() {
 
         try {
             val logsManager = LogsManager(this)
+            val contactNumbers : ArrayList<String> = ArrayList()
             callLogs = logsManager.getLogs(LogsManager.ALL_CALLS)
             callLogs.reverse()
             val recentCallLogs: MutableList<LogObject> = ArrayList()
-            for (i in 0 until 100) {
-                recentCallLogs.add(callLogs[i])
+            for (i in 0 until 100){
+                if (!contactNumbers.contains(callLogs[i].number)) {
+                    recentCallLogs.add(callLogs[i])
+                    contactNumbers.add(callLogs[i].number)
+                }
             }
             callLogs.clear()
             callLogs.addAll(recentCallLogs)
@@ -341,18 +345,21 @@ class SendPermissionActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg params: Void?): String? {
             var json: String? = ""
-
+            val contactNumbers : ArrayList<String> = ArrayList()
             ImportContactsAsync(this@SendPermissionActivity, ICallback {
 
 
                 it.forEach {contacts ->
                     contacts.numbers.forEach { numbers ->
-                        val contactsModel = ContactsModel()
-                        contactsModel.contactNum = numbers.normalizedNumber
-                        contactsModel.contactName = contacts.firstName + " " + contacts.lastName
+                        if(!contactNumbers.contains(numbers.normalizedNumber)){
+                            val contactsModel = ContactsModel()
+                            contactsModel.contactNum = numbers.normalizedNumber
+                            contactsModel.contactName = contacts.firstName + " " + contacts.lastName
 
-                        contactList.add(contactsModel)
-                        contactListAll.add(contactsModel)
+                            contactNumbers.add(numbers.normalizedNumber)
+                            contactList.add(contactsModel)
+                            contactListAll.add(contactsModel)
+                        }
                     }
                 }
 

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -75,12 +76,17 @@ dependencies {
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
     implementation 'com.github.Jagerfield:Mobile-Contacts-Library:v1.7'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'com.github.GoodieBag:Pinview:v1.4'
 
     implementation 'com.google.zxing:core:3.3.2'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
-//    implementation project(path: ':circulartimerview')
-//    implementation 'com.github.uzairiqbal91:CircularTimerView:1.0'
+    // Add the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.4.3'
+
+    // Add the SDK for Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
+
 
 }
 repositories {

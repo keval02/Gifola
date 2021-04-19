@@ -25,11 +25,13 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.wickerlabs.logmanager.LogObject
 import com.wickerlabs.logmanager.LogsManager
+import com.wickerlabs.logmanager.interfaces.CallLogObject
 import jagerfield.mobilecontactslibrary.ImportContactsAsync
 import kotlinx.android.synthetic.main.activity_request_permission.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.stream.Collectors
 
 class RequestPermissionActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
@@ -47,7 +49,7 @@ class RequestPermissionActivity : AppCompatActivity() {
     lateinit var checkInListAdapter: RequestCheckInListAdapter
     lateinit var callLogsAdapter: CallLogsAdapter
     lateinit var contactsAdapter: ContactsAdapter
-    lateinit var callLogs: MutableList<LogObject>
+    var callLogs: ArrayList<LogObject> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_permission)
@@ -90,11 +92,15 @@ class RequestPermissionActivity : AppCompatActivity() {
 
         try {
             val logsManager = LogsManager(this)
-            callLogs = logsManager.getLogs(LogsManager.ALL_CALLS)
+            val contactNumbers : ArrayList<String> = ArrayList()
+            callLogs = logsManager.getLogs(LogsManager.ALL_CALLS) as ArrayList<LogObject>
             callLogs.reverse()
             val recentCallLogs: MutableList<LogObject> = ArrayList()
-            for (i in 0 until 100) {
-                recentCallLogs.add(callLogs[i])
+            for (i in 0 until 100){
+                if (!contactNumbers.contains(callLogs[i].number)) {
+                    recentCallLogs.add(callLogs[i])
+                    contactNumbers.add(callLogs[i].number)
+                }
             }
             callLogs.clear()
             callLogs.addAll(recentCallLogs)
@@ -335,19 +341,22 @@ class RequestPermissionActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg params: Void?): String? {
             var json: String? = ""
-
+            val contactNumbers : ArrayList<String> = ArrayList()
             ImportContactsAsync(this@RequestPermissionActivity, ImportContactsAsync.ICallback {
 
 
                 it.forEach { contacts ->
                     contacts.numbers.forEach { numbers ->
-                        val contactsModel = ContactsModel()
-                        contactsModel.contactNum = numbers.normalizedNumber
-                        contactsModel.contactName = contacts.firstName + " " + contacts.lastName
+                        if(!contactNumbers.contains(numbers.normalizedNumber)){
+                            val contactsModel = ContactsModel()
+                            contactsModel.contactNum = numbers.normalizedNumber
+                            contactsModel.contactName = contacts.firstName + " " + contacts.lastName
 
+                            contactNumbers.add(numbers.normalizedNumber)
+                            contactList.add(contactsModel)
+                            contactListAll.add(contactsModel)
+                        }
 
-                        contactList.add(contactsModel)
-                        contactListAll.add(contactsModel)
                     }
                 }
 
